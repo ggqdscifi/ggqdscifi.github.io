@@ -1,0 +1,480 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Octane核心知识 | 热卤丁宇宙屋</title><meta name="keywords" content="C4D渲染"><meta name="author" content="内曼"><meta name="copyright" content="内曼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Octane核心知识"><meta name="application-name" content="Octane核心知识"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Octane核心知识"><meta property="og:url" content="http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/index.html"><meta property="og:site_name" content="热卤丁宇宙屋"><meta property="og:description" content="参考资料：B站nothing教研所-C4D基础课-07材质基础篇：OC渲染器设置B站nothing教研所-C4D基础课-08材质基础篇：灯光B站nothing教研所-C4D基础课-09材质基础篇：材质调节  首要设置（在OC的全局设置里）OC默认的一些设置是不利于制作和渲染的，需要提前修改一下。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2024/10/18/67127dc230c41.jpg"><meta property="article:author" content="内曼"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2024/10/18/67127dc230c41.jpg"><meta name="description" content="参考资料：B站nothing教研所-C4D基础课-07材质基础篇：OC渲染器设置B站nothing教研所-C4D基础课-08材质基础篇：灯光B站nothing教研所-C4D基础课-09材质基础篇：材质调节  首要设置（在OC的全局设置里）OC默认的一些设置是不利于制作和渲染的，需要提前修改一下。"><link rel="shortcut icon" href="/myblog.ico"><link rel="canonical" href="http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":["事在人为","无限进步","自然可畏","友谊万岁"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 内曼","link":"链接: ","source":"来源: 热卤丁宇宙屋","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '热卤丁宇宙屋',
+  title: 'Octane核心知识',
+  postAI: '',
+  pageFillDescription: '首要设置（在OC的全局设置里）, Kernal选项卡, Settings 选项卡下的Env. 子选项卡, 注意黏土模式, OC灯光, 日光 Daylight Tag, HDR Environment Tag, 区域光 Octane LightTag, OC材质, 漫射 Octane Diffuse Material, 光泽 Octane Glossy Material, 镜面 Octane Specular Material, 节点编辑器, 基础材质节点, 纹理节点, 纹理调整节点, 自带纹理节点, 调色节点参考资料站教研所基础课材质基础篇渲染器设置站教研所基础课材质基础篇灯光站教研所基础课材质基础篇材质调节首要设置在的全局设置里默认的一些设置是不利于制作和渲染的需要提前修改一下选项卡第一个下拉菜单渲染解算的模式信息通道一般用来预览通道直接光照渲染相对较快但不够写实三种无偏渲染模式三者差别不大一般用路径追踪最大采样值越大品质越高速度越慢预览的话设为就够最终渲染的话可以设为漫射折射的作用程度值越高效果越真实场景越亮预览的话设为就够最终渲染可以设为设为就行场景里有玻璃等物件的话可以增加对全局光照程度的钳制降低到可以防止出现伪阴影保留透明通道让噪点不会过分闪动建议勾选根据场景自动优化采样建议勾选选项卡下的子选项卡默认环境光的颜色一般是改成纯黑也就是完全没有光了然后手动打光注意黏土模式黏土模式忽略反射等材质属性来查看就像看白模一样这时候调材质是没反应的灯光日光是调整日光的整体强度只调整迎光面的光强度也就是主光的强度暗部不会受影响一般是先调定一个整体光照的调然后调控制主光的强度沿地平面旋转日光的角度与直接旋转日光对象的区别是后者会影响光的强度太阳大小影响影子的虚实天空颜色会影响场景的偏色因为日光会自带天空如果场景里还有的环境勾选可以同时显示日光和光照通过一张贴图形成光照区域光光源纹理通过等着色器来改变光源颜色光源分布使用贴图选择来改变光源的轮廓还可以导入文件来形成射灯效果注意如果是改变区域光对象本身的形状和大小要到灯光对象的选项卡里按面积发光不勾选的话光源缩放就不会影响光的强度双面发光是否会造成漫射高光投影区域光自身对象的透明度如果挡画面的话就调成材质材质的显示顺序优先显示后添加的材质优先显示子级对象自身的材质材质的选择透明就用不透明的话有反射就用没有反射就用漫射通道材质的底色可以添加纹理贴图三个常见的自带基础着色添加贴图要到并在其中调节贴图的投射方式和变换通道通道通道都是放贴图的用来添加凹凸质感用贴图的方式添加凹凸是视觉上的伪凹凸但速度快在的基础上还能带有伪凹凸的角度用贴图的方式添加凹凸是真实的凹凸但会慢因为会增加细分面通道中添加着色器后着色器的一般选如果太小效果会很粗糙太大会卡通道可以通过贴图隐藏模型的某部分通道自发光着色器一般做纯色发光体着色器可以加贴图比如做电子显示屏这种通道通道用来做半透效果光泽等于在漫射基础上多了反射的属性通道粗糙度控制磨砂质感的程度通道折射率控制整体反射的强度值时值越大反射越强越像金属但值的时候是金属质感最强的镜面通道折射率一般直接输入对应物体的值常见物体折射率通道通道用来做彩色玻璃效果只是单纯对玻璃着色但颜色不受玻璃厚度的影响不够真实更真实的玻璃色彩通道着色器玻璃颜色的浓淡这个参数数值不是特别敏感要大幅度改继续添加着色器来改变玻璃颜色着色器做半透材质节点编辑器比挨个改参数省事的方式比如同一种投射方式用一个节点连上就行了基础材质节点纹理节点贴图纯色也可作为值有明暗的都可以作为值纹理调整节点对应的就是在贴图中调节贴图的投射方式和变换自带纹理节点棋盘格可作为值噪波调色节点调整色相饱和度亮度要连在贴图节点和材质节点中间生成渐变纹理对贴图调色用色带上的颜色映射贴图里的明暗区域混合多个贴图',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-18 23:50:21',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/reloading.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">热卤丁宇宙屋</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 全部</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wechat_pay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AE%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">AE插件<sup>1</sup></a><a href="/tags/C4D%E5%8A%A8%E6%80%81%E5%9B%BE%E5%BD%A2/" style="font-size: 1.05rem;">C4D动态图形<sup>1</sup></a><a href="/tags/C4D%E6%B8%B2%E6%9F%93/" style="font-size: 1.05rem;">C4D渲染<sup>2</sup></a><a href="/tags/%E4%BC%A0%E8%AE%B0/" style="font-size: 1.05rem;">传记<sup>3</sup></a><a href="/tags/%E5%86%92%E9%99%A9/" style="font-size: 1.05rem;">冒险<sup>1</sup></a><a href="/tags/%E5%89%A7%E4%BD%9C/" style="font-size: 1.05rem;">剧作<sup>1</sup></a><a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 1.05rem;">剧情<sup>13</sup></a><a href="/tags/%E5%8A%A8%E4%BD%9C/" style="font-size: 1.05rem;">动作<sup>5</sup></a><a href="/tags/%E5%8F%A4%E8%A3%85/" style="font-size: 1.05rem;">古装<sup>1</sup></a><a href="/tags/%E5%96%9C%E5%89%A7/" style="font-size: 1.05rem;">喜剧<sup>4</sup></a><a href="/tags/%E5%A5%87%E5%B9%BB/" style="font-size: 1.05rem;">奇幻<sup>2</sup></a><a href="/tags/%E5%AE%B6%E5%BA%AD/" style="font-size: 1.05rem;">家庭<sup>3</sup></a><a href="/tags/%E6%82%AC%E7%96%91/" style="font-size: 1.05rem;">悬疑<sup>1</sup></a><a href="/tags/%E6%83%8A%E6%82%9A/" style="font-size: 1.05rem;">惊悚<sup>3</sup></a><a href="/tags/%E7%88%B1%E6%83%85/" style="font-size: 1.05rem;">爱情<sup>2</sup></a><a href="/tags/%E7%8A%AF%E7%BD%AA/" style="font-size: 1.05rem;">犯罪<sup>5</sup></a><a href="/tags/%E7%A7%91%E5%B9%BB/" style="font-size: 1.05rem;">科幻<sup>1</sup></a><a href="/tags/%E8%BF%90%E5%8A%A8/" style="font-size: 1.05rem;">运动<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">十二月 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" itemprop="url">软件教程</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/C4D%E6%B8%B2%E6%9F%93/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>C4D渲染</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Octane核心知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-10-18T15:27:00.000Z" title="发表于 2024-10-18 23:27:00">2024-10-18</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-10-18T15:50:21.857Z" title="更新于 2024-10-18 23:50:21">2024-10-18</time></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2024/10/18/67127dc230c41.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/"><header><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" itemprop="url">软件教程</a><a href="/tags/C4D%E6%B8%B2%E6%9F%93/" tabindex="-1" itemprop="url">C4D渲染</a><h1 id="CrawlerTitle" itemprop="name headline">Octane核心知识</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">内曼</span><time itemprop="dateCreated datePublished" datetime="2024-10-18T15:27:00.000Z" title="发表于 2024-10-18 23:27:00">2024-10-18</time><time itemprop="dateCreated datePublished" datetime="2024-10-18T15:50:21.857Z" title="更新于 2024-10-18 23:50:21">2024-10-18</time></header><blockquote>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13841197i6?p=9">B站nothing教研所-C4D基础课-07材质基础篇：OC渲染器设置</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13841197i6?p=10">B站nothing教研所-C4D基础课-08材质基础篇：灯光</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13841197i6?p=11">B站nothing教研所-C4D基础课-09材质基础篇：材质调节</a></p>
+</blockquote>
+<h1 id="首要设置（在OC的全局设置里）"><a href="#首要设置（在OC的全局设置里）" class="headerlink" title="首要设置（在OC的全局设置里）"></a>首要设置（在OC的全局设置里）</h1><p>OC默认的一些设置是不利于制作和渲染的，需要提前修改一下。</p>
+<h2 id="Kernal选项卡"><a href="#Kernal选项卡" class="headerlink" title="Kernal选项卡"></a>Kernal选项卡</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa73e721.png" alt="OC核心-01.png"></p>
+<ul>
+<li><p><strong>第一个下拉菜单</strong><br>渲染解算的模式。</p>
+<ul>
+<li>Info channels<br>信息通道。一般用来预览通道。</li>
+<li>Direct lighting<br>直接光照。渲染相对较快，但不够写实。</li>
+<li>Path tracing、Photon tracing、PMC<br>三种无偏渲染模式。三者差别不大，一般用Path tracing路径追踪。</li>
+</ul>
+</li>
+<li><p><strong>Max. samples</strong><br>最大采样。值越大，品质越高，速度越慢。预览的话设为800就够，最终渲染的话可以设为2000-20000。</p>
+</li>
+<li><p><strong>Diffuse depth、Specular depth</strong><br>漫射、折射的作用程度。值越高，效果越真实，场景越亮。</p>
+<ul>
+<li>Diffuse depth预览的话设为8就够，最终渲染可以设为16。</li>
+<li>Specular depth设为8就行，场景里有玻璃等物件的话可以增加。</li>
+</ul>
+</li>
+<li><p><strong>Gl clamp</strong><br>对全局光照程度的钳制。降低到1000可以防止出现伪阴影。</p>
+</li>
+<li><p><strong>Alpha channel</strong><br>保留透明通道。</p>
+</li>
+<li><p><strong>Static noise</strong><br>让噪点不会过分闪动。建议勾选。</p>
+</li>
+<li><p><strong>Adaptive sampling</strong><br>根据场景自动优化采样。建议勾选。</p>
+</li>
+</ul>
+<h2 id="Settings-选项卡下的Env-子选项卡"><a href="#Settings-选项卡下的Env-子选项卡" class="headerlink" title="Settings 选项卡下的Env. 子选项卡"></a>Settings 选项卡下的Env. 子选项卡</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa71d957.png" alt="OC核心-02.png"></p>
+<ul>
+<li><strong>Default environment color</strong><br>默认环境光的颜色。一般是改成纯黑，也就是完全没有光了，然后手动打光。</li>
+</ul>
+<h2 id="注意黏土模式"><a href="#注意黏土模式" class="headerlink" title="注意黏土模式"></a>注意黏土模式</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa72b3bf.png" alt="OC核心-03.png"></p>
+<ul>
+<li><strong>Clay modes</strong><br>黏土模式。忽略反射等材质属性来查看，就像看白模一样，这时候调材质是没反应的。</li>
+</ul>
+<h1 id="OC灯光"><a href="#OC灯光" class="headerlink" title="OC灯光"></a>OC灯光</h1><h2 id="日光-Daylight-Tag"><a href="#日光-Daylight-Tag" class="headerlink" title="日光 Daylight Tag"></a>日光 Daylight Tag</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa738d21.png" alt="OC核心-04.png"></p>
+<ul>
+<li><strong>Power、Sun intensity</strong><br>Power是调整日光的整体强度；Sun intensity只调整迎光面的光强度，也就是主光的强度，暗部不会受影响。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa7455f1.png" alt="OC核心-05.png"><br>一般是先调Power定一个整体光照的调，然后调Sun intensity控制主光的强度。</li>
+<li><strong>North Offset</strong><br>沿地平面旋转日光的角度。与直接旋转日光对象的区别是后者会影响光的强度。</li>
+<li><strong>Sun size</strong><br>太阳大小。影响影子的虚实。</li>
+<li><strong>Sky color</strong><br>天空颜色。会影响场景的偏色（因为Octane日光会自带天空）。</li>
+<li><strong>Mix sky texture</strong><br>如果场景里还有OC的HDR环境，勾选可以同时显示日光和HDR光照。</li>
+</ul>
+<h2 id="HDR-Environment-Tag"><a href="#HDR-Environment-Tag" class="headerlink" title="HDR Environment Tag"></a>HDR Environment Tag</h2><p>通过一张HDR贴图形成光照。</p>
+<h2 id="区域光-Octane-LightTag"><a href="#区域光-Octane-LightTag" class="headerlink" title="区域光 Octane LightTag"></a>区域光 Octane LightTag</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa742e9c.png" alt="OC核心-06.png"></p>
+<ul>
+<li><strong>Texture</strong><br>光源纹理。通过Color、Gradient等着色器来改变光源颜色。</li>
+<li><strong>Distribution</strong><br>光源分布。使用贴图（选择c4doctane-ImageTexture）来改变光源的轮廓，还可以导入IES文件来形成射灯效果。<br>注意如果是改变区域光对象本身的形状和大小，要到灯光对象的Details选项卡里。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa81ae9b.png" alt="OC核心-07.png"></li>
+<li><strong>Surface brightness</strong><br>按面积发光。不勾选的话，光源缩放就不会影响光的强度。</li>
+<li><strong>Double sided</strong><br>双面发光。</li>
+<li><strong>Visible on diffuse、Visible on specular、Cast shadows</strong><br>是否会造成漫射、高光、投影。</li>
+<li><strong>Opacity</strong><br>区域光自身对象的透明度。如果挡画面的话，就调成0。</li>
+</ul>
+<h1 id="OC材质"><a href="#OC材质" class="headerlink" title="OC材质"></a>OC材质</h1><p>材质的显示顺序：优先显示后添加的材质；优先显示子级对象自身的材质。</p>
+<p>材质的选择：透明就用Specular；不透明的话，有反射就用Glossy，没有反射就用Diffuse。</p>
+<h2 id="漫射-Octane-Diffuse-Material"><a href="#漫射-Octane-Diffuse-Material" class="headerlink" title="漫射 Octane Diffuse Material"></a>漫射 Octane Diffuse Material</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa8496e2.png" alt="OC核心-08.png"></p>
+<ul>
+<li><p><strong>Diffuse通道</strong><br>材质的底色。</p>
+<ul>
+<li><strong>Texture</strong><br>可以添加纹理贴图。（三个常见的C4D自带基础着色：Color、Gradient、Noise）<br>添加贴图要到c4doctane-ImageTexture，并在其中调节贴图的投射方式和变换。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa85d72a.png" alt="OC核心-09.png"></li>
+</ul>
+</li>
+<li><p><strong>Bump通道、Normal通道、Displacement通道</strong><br>都是放贴图的，用来添加凹凸质感。<br>Bump：用贴图的方式添加凹凸。是视觉上的伪凹凸，但速度快。<br>Normal：在Bump的基础上还能带有伪凹凸的角度。<br>Displacement：用贴图的方式添加凹凸。是真实的凹凸，但会慢（因为会增加细分面）。</p>
+<ul>
+<li>Displacement通道中添加着色器后，着色器的<strong>Level of detail</strong>一般选2048x2048，如果太小效果会很粗糙，太大会卡。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fa87ace2.png" alt="OC核心-10.png"></li>
+</ul>
+</li>
+<li><p><strong>Opacity通道</strong><br>可以通过贴图隐藏模型的某部分。</p>
+</li>
+<li><p><strong>Emission通道</strong><br>自发光。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb050d9e.png" alt="OC核心-11.png"></p>
+<ul>
+<li><strong>Blackbody emission着色器</strong><br>一般做纯色发光体。</li>
+<li><strong>Texture emission着色器</strong><br>可以加贴图，比如做电子显示屏这种。</li>
+</ul>
+</li>
+<li><p><strong>Transmission通道、Medium通道</strong><br>用来做SSS半透效果。</p>
+</li>
+</ul>
+<h2 id="光泽-Octane-Glossy-Material"><a href="#光泽-Octane-Glossy-Material" class="headerlink" title="光泽 Octane Glossy Material"></a>光泽 Octane Glossy Material</h2><p>等于在漫射基础上多了反射的属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb05f042.png" alt="OC核心-12.png"></p>
+<ul>
+<li><strong>Roughness通道</strong><br>粗糙度。控制磨砂质感的程度。</li>
+<li><strong>Index通道</strong><br>折射率。控制整体反射的强度，1&lt;值≤8时，值越大反射越强，越像金属；但值=1的时候是金属质感最强的。</li>
+</ul>
+<h2 id="镜面-Octane-Specular-Material"><a href="#镜面-Octane-Specular-Material" class="headerlink" title="镜面 Octane Specular Material"></a>镜面 Octane Specular Material</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb05b3df.png" alt="OC核心-13.png"></p>
+<ul>
+<li><p><strong>Index通道</strong><br>折射率。一般直接输入对应物体的值。（常见物体折射率）</p>
+</li>
+<li><p><strong>Transmission通道</strong>、<strong>Medium通道</strong><br>用来做彩色玻璃效果。<br>Transmission：只是单纯对玻璃着色，但颜色不受玻璃厚度的影响，不够真实。<br>Medium：更真实的玻璃色彩。</p>
+<ul>
+<li><p>Medium通道<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb053cbe.png" alt="OC核心-14.png"></p>
+<ul>
+<li><p><strong>Absorption着色器</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb050d49.png" alt="OC核心-15.png"></p>
+<ul>
+<li><strong>Density</strong><br>玻璃颜色的浓淡。这个参数数值不是特别敏感，要大幅度改。</li>
+<li><strong>Absorption</strong><br>继续添加着色器来改变玻璃颜色。</li>
+</ul>
+</li>
+<li><p><strong>Scattering着色器</strong><br>做半透材质。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="节点编辑器"><a href="#节点编辑器" class="headerlink" title="节点编辑器"></a>节点编辑器</h1><p>比挨个改参数省事的方式（比如同一种投射方式用一个节点连上就行了）。</p>
+<h2 id="基础材质节点"><a href="#基础材质节点" class="headerlink" title="基础材质节点"></a>基础材质节点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb0530c0.png" alt="OC核心-16.png"></p>
+<h2 id="纹理节点"><a href="#纹理节点" class="headerlink" title="纹理节点"></a>纹理节点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb154564.png" alt="OC核心-17.png"></p>
+<ul>
+<li>Image texture<br>贴图。</li>
+<li><strong>Rgb spectrum</strong><br>纯色；也可作为值（有明暗的都可以作为值）。</li>
+</ul>
+<h2 id="纹理调整节点"><a href="#纹理调整节点" class="headerlink" title="纹理调整节点"></a>纹理调整节点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb19080a.png" alt="OC核心-18.png"></p>
+<p>对应的就是在贴图中调节贴图的投射方式和变换。</p>
+<h2 id="自带纹理节点"><a href="#自带纹理节点" class="headerlink" title="自带纹理节点"></a>自带纹理节点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb17274c.png" alt="OC核心-19.png"></p>
+<ul>
+<li><strong>Checker</strong><br>棋盘格；可作为值。</li>
+<li><strong>Octane noise</strong><br>OC噪波。</li>
+</ul>
+<h2 id="调色节点"><a href="#调色节点" class="headerlink" title="调色节点"></a>调色节点</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb1b3abc.png" alt="OC核心-20.png"></p>
+<ul>
+<li><strong>Color correction</strong><br>调整色相、饱和度、亮度。<br>要连在贴图节点和材质节点中间。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127fb978647.png" alt="OC核心-21.png"></li>
+<li><strong>Octane gradient</strong><br>生成渐变纹理；对贴图调色（用色带上的颜色映射贴图里的明暗区域）。</li>
+<li><strong>Mix</strong><br>混合多个贴图。</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/fox.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/fox.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">内曼</div><div class="post-copyright__author_desc">很多事情，都需要时间积累的啊</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/')">Octane核心知识</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">热卤丁宇宙屋</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__category-list"><a class="post-meta__box__categoryes" href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/"><span class="categoryes-punctuation"> <i class="anzhiyufont anzhiyu-icon-inbox"></i></span>软件教程<span class="categoryesPageCount">4</span></a></div><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/C4D%E6%B8%B2%E6%9F%93/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>C4D渲染<span class="tagsPageCount">2</span></a></div></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/18/%E5%85%8B%E9%9A%86/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127c675fbc2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">克隆</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/18/%E5%B8%B8%E8%A7%81%E7%89%A9%E4%BD%93%E6%8A%98%E5%B0%84%E7%8E%87/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127dc22e229.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常见物体折射率</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2024/10/18/%E5%B8%B8%E8%A7%81%E7%89%A9%E4%BD%93%E6%8A%98%E5%B0%84%E7%8E%87/" title="常见物体折射率"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127dc22e229.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-10-18</div><div class="title">常见物体折射率</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/fox.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description">因为乔·琼斯往他头上砸了个钹。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">内曼</h1><div class="author-info__desc">很多事情，都需要时间积累的啊</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/1071245148" target="_blank" title="bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E8%A6%81%E8%AE%BE%E7%BD%AE%EF%BC%88%E5%9C%A8OC%E7%9A%84%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%E9%87%8C%EF%BC%89"><span class="toc-text">首要设置（在OC的全局设置里）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernal%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">Kernal选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Settings-%E9%80%89%E9%A1%B9%E5%8D%A1%E4%B8%8B%E7%9A%84Env-%E5%AD%90%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">Settings 选项卡下的Env. 子选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E9%BB%8F%E5%9C%9F%E6%A8%A1%E5%BC%8F"><span class="toc-text">注意黏土模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OC%E7%81%AF%E5%85%89"><span class="toc-text">OC灯光</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%85%89-Daylight-Tag"><span class="toc-text">日光 Daylight Tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDR-Environment-Tag"><span class="toc-text">HDR Environment Tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E5%85%89-Octane-LightTag"><span class="toc-text">区域光 Octane LightTag</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OC%E6%9D%90%E8%B4%A8"><span class="toc-text">OC材质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%AB%E5%B0%84-Octane-Diffuse-Material"><span class="toc-text">漫射 Octane Diffuse Material</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%89%E6%B3%BD-Octane-Glossy-Material"><span class="toc-text">光泽 Octane Glossy Material</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%9C%E9%9D%A2-Octane-Specular-Material"><span class="toc-text">镜面 Octane Specular Material</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">节点编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%9D%90%E8%B4%A8%E8%8A%82%E7%82%B9"><span class="toc-text">基础材质节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B9%E7%90%86%E8%8A%82%E7%82%B9"><span class="toc-text">纹理节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B9%E7%90%86%E8%B0%83%E6%95%B4%E8%8A%82%E7%82%B9"><span class="toc-text">纹理调整节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B8%A6%E7%BA%B9%E7%90%86%E8%8A%82%E7%82%B9"><span class="toc-text">自带纹理节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%89%B2%E8%8A%82%E7%82%B9"><span class="toc-text">调色节点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/18/%E5%B8%B8%E8%A7%81%E7%89%A9%E4%BD%93%E6%8A%98%E5%B0%84%E7%8E%87/" title="常见物体折射率"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127dc22e229.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常见物体折射率"/></a><div class="content"><a class="title" href="/2024/10/18/%E5%B8%B8%E8%A7%81%E7%89%A9%E4%BD%93%E6%8A%98%E5%B0%84%E7%8E%87/" title="常见物体折射率">常见物体折射率</a><time datetime="2024-10-18T15:51:00.000Z" title="发表于 2024-10-18 23:51:00">2024-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/" title="Octane核心知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127dc230c41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Octane核心知识"/></a><div class="content"><a class="title" href="/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/" title="Octane核心知识">Octane核心知识</a><time datetime="2024-10-18T15:27:00.000Z" title="发表于 2024-10-18 23:27:00">2024-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/18/%E5%85%8B%E9%9A%86/" title="克隆"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67127c675fbc2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="克隆"/></a><div class="content"><a class="title" href="/2024/10/18/%E5%85%8B%E9%9A%86/" title="克隆">克隆</a><time datetime="2024-10-18T14:27:00.000Z" title="发表于 2024-10-18 22:27:00">2024-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/18/%E5%86%B2%E7%AA%81/" title="冲突"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/18/67124b46428e5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="冲突"/></a><div class="content"><a class="title" href="/2024/10/18/%E5%86%B2%E7%AA%81/" title="冲突">冲突</a><time datetime="2024-10-18T11:37:00.000Z" title="发表于 2024-10-18 19:37:00">2024-10-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/14/Pastiche/" title="Pastiche | 众多元素汇聚成自定义图形"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2024/10/14/670cd1ccecade.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pastiche | 众多元素汇聚成自定义图形"/></a><div class="content"><a class="title" href="/2024/10/14/Pastiche/" title="Pastiche | 众多元素汇聚成自定义图形">Pastiche | 众多元素汇聚成自定义图形</a><time datetime="2024-10-14T08:15:59.000Z" title="发表于 2024-10-14 16:15:59">2024-10-14</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text">到底了：）</div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2019 - 2024 By <a class="footer-bar-link" href="/" title="内曼" target="_blank">内曼</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" title="Hexo框架">Hexo框架</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="anzhiyu主题">anzhiyu主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-book faa-tada" style="font-size: 0.9em;"></i><span> 全部</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/AE%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">AE插件<sup>1</sup></a><a href="/tags/C4D%E5%8A%A8%E6%80%81%E5%9B%BE%E5%BD%A2/" style="font-size: 0.88rem;">C4D动态图形<sup>1</sup></a><a href="/tags/C4D%E6%B8%B2%E6%9F%93/" style="font-size: 0.88rem;">C4D渲染<sup>2</sup></a><a href="/tags/%E4%BC%A0%E8%AE%B0/" style="font-size: 0.88rem;">传记<sup>3</sup></a><a href="/tags/%E5%86%92%E9%99%A9/" style="font-size: 0.88rem;">冒险<sup>1</sup></a><a href="/tags/%E5%89%A7%E4%BD%9C/" style="font-size: 0.88rem;">剧作<sup>1</sup></a><a href="/tags/%E5%89%A7%E6%83%85/" style="font-size: 0.88rem;">剧情<sup>13</sup></a><a href="/tags/%E5%8A%A8%E4%BD%9C/" style="font-size: 0.88rem;">动作<sup>5</sup></a><a href="/tags/%E5%8F%A4%E8%A3%85/" style="font-size: 0.88rem;">古装<sup>1</sup></a><a href="/tags/%E5%96%9C%E5%89%A7/" style="font-size: 0.88rem;">喜剧<sup>4</sup></a><a href="/tags/%E5%A5%87%E5%B9%BB/" style="font-size: 0.88rem;">奇幻<sup>2</sup></a><a href="/tags/%E5%AE%B6%E5%BA%AD/" style="font-size: 0.88rem;">家庭<sup>3</sup></a><a href="/tags/%E6%82%AC%E7%96%91/" style="font-size: 0.88rem;">悬疑<sup>1</sup></a><a href="/tags/%E6%83%8A%E6%82%9A/" style="font-size: 0.88rem;">惊悚<sup>3</sup></a><a href="/tags/%E7%88%B1%E6%83%85/" style="font-size: 0.88rem;">爱情<sup>2</sup></a><a href="/tags/%E7%8A%AF%E7%BD%AA/" style="font-size: 0.88rem;">犯罪<sup>5</sup></a><a href="/tags/%E7%A7%91%E5%B9%BB/" style="font-size: 0.88rem;">科幻<sup>1</sup></a><a href="/tags/%E8%BF%90%E5%8A%A8/" style="font-size: 0.88rem;">运动<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>简繁转换</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2019 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 内曼 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
