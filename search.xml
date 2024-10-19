@@ -1,143 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Octane核心知识</title>
-    <url>/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<blockquote>
-<p>参考资料：<br><a href="https://www.bilibili.com/video/BV13841197i6?p=9">B站nothing教研所-C4D基础课-07材质基础篇：OC渲染器设置</a><br><a href="https://www.bilibili.com/video/BV13841197i6?p=10">B站nothing教研所-C4D基础课-08材质基础篇：灯光</a><br><a href="https://www.bilibili.com/video/BV13841197i6?p=11">B站nothing教研所-C4D基础课-09材质基础篇：材质调节</a></p>
-</blockquote>
-<h1 id="首要设置（在OC的全局设置里）"><a href="#首要设置（在OC的全局设置里）" class="headerlink" title="首要设置（在OC的全局设置里）"></a>首要设置（在OC的全局设置里）</h1><p>OC默认的一些设置是不利于制作和渲染的，需要提前修改一下。</p>
-<h2 id="Kernal选项卡"><a href="#Kernal选项卡" class="headerlink" title="Kernal选项卡"></a>Kernal选项卡</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa73e721.png" alt="OC核心-01.png"></p>
+    <title>Pastiche | 众多元素汇聚成自定义图形</title>
+    <url>/2024/10/14/Pastiche/</url>
+    <content><![CDATA[<h1 id="Pastiche"><a href="#Pastiche" class="headerlink" title="Pastiche"></a>Pastiche</h1><h1 id="核心作用"><a href="#核心作用" class="headerlink" title="核心作用"></a>核心作用</h1><p>让多个图层汇聚到一起形成一个特定的形状。</p>
+<h1 id="v2-1-15"><a href="#v2-1-15" class="headerlink" title="v2.1.15"></a>v2.1.15</h1><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ol>
+<li>准备：作为衬底的层、作为填充物的集群层。</li>
+<li>把衬底层预合成，然后把集群层和衬底预合成放在同一合成内，对预合成添加Pastiche。</li>
+<li>设置集群的分布方式（各变换值+应用顺序）。</li>
+<li>设置集群的动画运动方式（时间差值+空间差值+应用顺序）</li>
+<li>单击<strong>Create</strong>按钮即可（每次调整后都要再点一次）。</li>
+</ol>
+<h2 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h2><h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p>控制集群的分布方式。</p>
+<img src="https://bu.dusays.com/2024/10/14/670cd47ca0b48.png" width = 400>
+
 <ul>
-<li><p><strong>第一个下拉菜单</strong><br>渲染解算的模式。</p>
+<li><p><strong>Position</strong><br>位置分布依据。</p>
 <ul>
-<li>Info channels<br>信息通道。一般用来预览通道。</li>
-<li>Direct lighting<br>直接光照。渲染相对较快，但不够写实。</li>
-<li>Path tracing、Photon tracing、PMC<br>三种无偏渲染模式。三者差别不大，一般用Path tracing路径追踪。</li>
+<li><strong>Stippling (Alpha&#x2F;Luma)</strong><br>按点状排列。感觉不常用。<br>激活Position Options下的<strong>Stippling Precision</strong>，控制点状排列的精准度。</li>
+<li><strong>Organic</strong><br>自然地填充。</li>
+<li><strong>Ignore</strong><br>保持当前状态，并且不会打关键帧。</li>
 </ul>
 </li>
-<li><p><strong>Max. samples</strong><br>最大采样。值越大，品质越高，速度越慢。预览的话设为800就够，最终渲染的话可以设为2000-20000。</p>
-</li>
-<li><p><strong>Diffuse depth、Specular depth</strong><br>漫射、折射的作用程度。值越高，效果越真实，场景越亮。</p>
+<li><p><strong>Scale</strong><br>缩放依据。</p>
 <ul>
-<li>Diffuse depth预览的话设为8就够，最终渲染可以设为16。</li>
-<li>Specular depth设为8就行，场景里有玻璃等物件的话可以增加。</li>
+<li><strong>From Alpha</strong><br>越不透明的区域，缩放越大。<br>注意：如果alpha区域太小，也可能在此处出现一个比区域本身大很多的个体，应该是bug。</li>
+<li><strong>From Luminance</strong><br>明度越高的区域，缩放越大。</li>
+<li><strong>From Neighborhood</strong><br>根据相邻的空隙自动适配。</li>
 </ul>
 </li>
-<li><p><strong>Gl clamp</strong><br>对全局光照程度的钳制。降低到1000可以防止出现伪阴影。</p>
-</li>
-<li><p><strong>Alpha channel</strong><br>保留透明通道。</p>
-</li>
-<li><p><strong>Static noise</strong><br>让噪点不会过分闪动。建议勾选。</p>
-</li>
-<li><p><strong>Adaptive sampling</strong><br>根据场景自动优化采样。建议勾选。</p>
-</li>
-</ul>
-<h2 id="Settings-选项卡下的Env-子选项卡"><a href="#Settings-选项卡下的Env-子选项卡" class="headerlink" title="Settings 选项卡下的Env. 子选项卡"></a>Settings 选项卡下的Env. 子选项卡</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa71d957.png" alt="OC核心-02.png"></p>
+<li><p><strong>Rotation</strong><br>旋转依据。</p>
 <ul>
-<li><strong>Default environment color</strong><br>默认环境光的颜色。一般是改成纯黑，也就是完全没有光了，然后手动打光。</li>
-</ul>
-<h2 id="注意黏土模式"><a href="#注意黏土模式" class="headerlink" title="注意黏土模式"></a>注意黏土模式</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa72b3bf.png" alt="OC核心-03.png"></p>
-<ul>
-<li><strong>Clay modes</strong><br>黏土模式。忽略反射等材质属性来查看，就像看白模一样，这时候调材质是没反应的。</li>
-</ul>
-<h1 id="OC灯光"><a href="#OC灯光" class="headerlink" title="OC灯光"></a>OC灯光</h1><h2 id="日光-Daylight-Tag"><a href="#日光-Daylight-Tag" class="headerlink" title="日光 Daylight Tag"></a>日光 Daylight Tag</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa738d21.png" alt="OC核心-04.png"></p>
-<ul>
-<li><strong>Power、Sun intensity</strong><br>Power是调整日光的整体强度；Sun intensity只调整迎光面的光强度，也就是主光的强度，暗部不会受影响。<br><img src="https://bu.dusays.com/2024/10/18/67127fa7455f1.png" alt="OC核心-05.png"><br>一般是先调Power定一个整体光照的调，然后调Sun intensity控制主光的强度。</li>
-<li><strong>North Offset</strong><br>沿地平面旋转日光的角度。与直接旋转日光对象的区别是后者会影响光的强度。</li>
-<li><strong>Sun size</strong><br>太阳大小。影响影子的虚实。</li>
-<li><strong>Sky color</strong><br>天空颜色。会影响场景的偏色（因为Octane日光会自带天空）。</li>
-<li><strong>Mix sky texture</strong><br>如果场景里还有OC的HDR环境，勾选可以同时显示日光和HDR光照。</li>
-</ul>
-<h2 id="HDR-Environment-Tag"><a href="#HDR-Environment-Tag" class="headerlink" title="HDR Environment Tag"></a>HDR Environment Tag</h2><p>通过一张HDR贴图形成光照。</p>
-<h2 id="区域光-Octane-LightTag"><a href="#区域光-Octane-LightTag" class="headerlink" title="区域光 Octane LightTag"></a>区域光 Octane LightTag</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa742e9c.png" alt="OC核心-06.png"></p>
-<ul>
-<li><strong>Texture</strong><br>光源纹理。通过Color、Gradient等着色器来改变光源颜色。</li>
-<li><strong>Distribution</strong><br>光源分布。使用贴图（选择c4doctane-ImageTexture）来改变光源的轮廓，还可以导入IES文件来形成射灯效果。<br>注意如果是改变区域光对象本身的形状和大小，要到灯光对象的Details选项卡里。<br><img src="https://bu.dusays.com/2024/10/18/67127fa81ae9b.png" alt="OC核心-07.png"></li>
-<li><strong>Surface brightness</strong><br>按面积发光。不勾选的话，光源缩放就不会影响光的强度。</li>
-<li><strong>Double sided</strong><br>双面发光。</li>
-<li><strong>Visible on diffuse、Visible on specular、Cast shadows</strong><br>是否会造成漫射、高光、投影。</li>
-<li><strong>Opacity</strong><br>区域光自身对象的透明度。如果挡画面的话，就调成0。</li>
-</ul>
-<h1 id="OC材质"><a href="#OC材质" class="headerlink" title="OC材质"></a>OC材质</h1><p>材质的显示顺序：优先显示后添加的材质；优先显示子级对象自身的材质。</p>
-<p>材质的选择：透明就用Specular；不透明的话，有反射就用Glossy，没有反射就用Diffuse。</p>
-<h2 id="漫射-Octane-Diffuse-Material"><a href="#漫射-Octane-Diffuse-Material" class="headerlink" title="漫射 Octane Diffuse Material"></a>漫射 Octane Diffuse Material</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa8496e2.png" alt="OC核心-08.png"></p>
-<ul>
-<li><p><strong>Diffuse通道</strong><br>材质的底色。</p>
-<ul>
-<li><strong>Texture</strong><br>可以添加纹理贴图。（三个常见的C4D自带基础着色：Color、Gradient、Noise）<br>添加贴图要到c4doctane-ImageTexture，并在其中调节贴图的投射方式和变换。<br><img src="https://bu.dusays.com/2024/10/18/67127fa85d72a.png" alt="OC核心-09.png"></li>
+<li><strong>Orient Towards Center</strong><br>集群全部朝向衬底图案的中心。​</li>
 </ul>
 </li>
-<li><p><strong>Bump通道、Normal通道、Displacement通道</strong><br>都是放贴图的，用来添加凹凸质感。<br>Bump：用贴图的方式添加凹凸。是视觉上的伪凹凸，但速度快。<br>Normal：在Bump的基础上还能带有伪凹凸的角度。<br>Displacement：用贴图的方式添加凹凸。是真实的凹凸，但会慢（因为会增加细分面）。</p>
+<li><p><strong>Fill Color&#x2F;Stroke Color</strong><br>填充、描边的颜色依据。</p>
 <ul>
-<li>Displacement通道中添加着色器后，着色器的<strong>Level of detail</strong>一般选2048x2048，如果太小效果会很粗糙，太大会卡。<br><img src="https://bu.dusays.com/2024/10/18/67127fa87ace2.png" alt="OC核心-10.png"></li>
+<li><strong>Custom Color</strong><br>指定颜色。<br>激活Color Options下的<strong>Fill Color&#x2F;Stroke Color</strong>，来设定颜色。</li>
+<li><strong>Random</strong><br>随机。<br>激活Color Options下的<strong>Min&#x2F;Max Fill color</strong>和<strong>Min&#x2F;Max Stroke color</strong>，来限制随机范围。</li>
+<li><strong>Source Color</strong><br>保持和衬底图案的颜色一样。</li>
 </ul>
 </li>
-<li><p><strong>Opacity通道</strong><br>可以通过贴图隐藏模型的某部分。</p>
-</li>
-<li><p><strong>Emission通道</strong><br>自发光。<br><img src="https://bu.dusays.com/2024/10/18/67127fb050d9e.png" alt="OC核心-11.png"></p>
+<li><p><strong>Position&#x2F;Scale&#x2F;Rotation&#x2F;Opacity&#x2F;Color Options</strong><br>在设定了依据的基础上，继续限制值的范围。</p>
 <ul>
-<li><strong>Blackbody emission着色器</strong><br>一般做纯色发光体。</li>
-<li><strong>Texture emission着色器</strong><br>可以加贴图，比如做电子显示屏这种。</li>
+<li>注：Color Options下的<strong>Outside The source</strong>没试出来啥作用，不影响。</li>
 </ul>
 </li>
-<li><p><strong>Transmission通道、Medium通道</strong><br>用来做SSS半透效果。</p>
-</li>
-</ul>
-<h2 id="光泽-Octane-Glossy-Material"><a href="#光泽-Octane-Glossy-Material" class="headerlink" title="光泽 Octane Glossy Material"></a>光泽 Octane Glossy Material</h2><p>等于在漫射基础上多了反射的属性。</p>
-<p><img src="https://bu.dusays.com/2024/10/18/67127fb05f042.png" alt="OC核心-12.png"></p>
+<li><p><strong>Layer Order</strong><br>集群排布的应用顺序（根据层序号）。</p>
 <ul>
-<li><strong>Roughness通道</strong><br>粗糙度。控制磨砂质感的程度。</li>
-<li><strong>Index通道</strong><br>折射率。控制整体反射的强度，1&lt;值≤8时，值越大反射越强，越像金属；但值=1的时候是金属质感最强的。</li>
-</ul>
-<h2 id="镜面-Octane-Specular-Material"><a href="#镜面-Octane-Specular-Material" class="headerlink" title="镜面 Octane Specular Material"></a>镜面 Octane Specular Material</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb05b3df.png" alt="OC核心-13.png"></p>
-<ul>
-<li><p><strong>Index通道</strong><br>折射率。一般直接输入对应物体的值。（常见物体折射率）</p>
-</li>
-<li><p><strong>Transmission通道</strong>、<strong>Medium通道</strong><br>用来做彩色玻璃效果。<br>Transmission：只是单纯对玻璃着色，但颜色不受玻璃厚度的影响，不够真实。<br>Medium：更真实的玻璃色彩。</p>
-<ul>
-<li><p>Medium通道<br><img src="https://bu.dusays.com/2024/10/18/67127fb053cbe.png" alt="OC核心-14.png"></p>
-<ul>
-<li><p><strong>Absorption着色器</strong></p>
-<p><img src="https://bu.dusays.com/2024/10/18/67127fb050d49.png" alt="OC核心-15.png"></p>
-<ul>
-<li><strong>Density</strong><br>玻璃颜色的浓淡。这个参数数值不是特别敏感，要大幅度改。</li>
-<li><strong>Absorption</strong><br>继续添加着色器来改变玻璃颜色。</li>
-</ul>
-</li>
-<li><p><strong>Scattering着色器</strong><br>做半透材质。</p>
-</li>
+<li><strong>By X&#x2F;Y</strong><br>从左到右&#x2F;从上到下递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf29eb.png" width = 200>
+<img src="https://bu.dusays.com/2024/10/14/670cd1ccd95ed.png" width = 200></li>
+<li><strong>By Norm</strong><br>从第一象限到第四象限递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf0b46.png" width = 200></li>
+<li><strong>By Distance from Comp Center</strong><br>离衬底预合成的中心越远越递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf211d.png" width = 200></li>
+<li><strong>By Distance from lmage Center</strong><br>离衬底图案的中心越远越递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1cdf1ebe.png" width = 200></li>
+<li><strong>Minimum Assignment</strong><br>在当前分布的基础上，取最近的衬底图案处。  <img src="https://bu.dusays.com/2024/10/14/670cd1ce13c4d.png" width = 500>
+<img src="https://bu.dusays.com/2024/10/14/670cd1ce37bf6.png" width = 500></li>
 </ul>
 </li>
 </ul>
+<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><p>控制动画的运动方式。</p>
+<img src="https://bu.dusays.com/2024/10/14/670cd1ce55f56.png" width = 400>
+
+<ul>
+<li><p><strong>Frames to Render</strong><br>点击Create时应用在时间线上的哪里。</p>
+<ul>
+<li><strong>Current Frame</strong><br>仅应用到当前帧。<br>激活<strong>Force Keyframing</strong>，勾选将会在点击Create时给集群层们K帧。</li>
+<li><strong>Every X Frames (within work area)</strong><br>每个X帧自动打一个关键帧，在关键帧处应用。<br>激活<strong>Interval (frames)</strong> ，来设定X的值。</li>
+<li><strong>From Layer Markers</strong><br>根据衬底预合成上的标记位置自动打关键帧，在关键帧处应用。</li>
+</ul>
+</li>
+<li><p><strong>Temporal Interpolation</strong><br>关键帧时间差值，用来调整缓入缓出。<br>设为<strong>Custom</strong>会激活<strong>Speed In&#x2F;Out</strong>（没试出来具体怎么回事）和<strong>Influence In&#x2F;Out</strong>（自定义缓动值）。</p>
+</li>
+<li><p><strong>Spatial Interpolation</strong><br>关键帧空间差值，用来调整运动形式。</p>
+<ul>
+<li><strong>Elastic</strong><br>弹性运动。<br>激活<strong>Springiness</strong>（弹性程度）和<strong>In Out Elastic</strong>（动画出入点选择）。</li>
+<li><strong>Inner&#x2F;Outer Half Circle</strong><br>逆&#x2F;顺时针半圆运动。</li>
+<li><strong>Random Inner &amp; Outer</strong><br>随机逆+顺时针半圆运动。</li>
+<li><strong>Step</strong><br>画阶梯。</li>
+<li><strong>Zig Zag</strong><br>画软Z字。</li>
+<li><strong>Custom</strong><br>指定空间差值。<br>激活<strong>In&#x2F;Out Tangent</strong>，来调整动画出入点的圆曲偏离程度，值越大运动越歪。</li>
+</ul>
+</li>
+<li><p><strong>Offset (frames)</strong><br>集群层之间动画错落的最大帧数。</p>
+</li>
+<li><p><strong>Offset Method</strong><br>动画错落的时候，集群层先后运动的顺序（按画面中的视觉位置）。</p>
 </li>
 </ul>
-<h1 id="节点编辑器"><a href="#节点编辑器" class="headerlink" title="节点编辑器"></a>节点编辑器</h1><p>比挨个改参数省事的方式（比如同一种投射方式用一个节点连上就行了）。</p>
-<h2 id="基础材质节点"><a href="#基础材质节点" class="headerlink" title="基础材质节点"></a>基础材质节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb0530c0.png" alt="OC核心-16.png"></p>
-<h2 id="纹理节点"><a href="#纹理节点" class="headerlink" title="纹理节点"></a>纹理节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb154564.png" alt="OC核心-17.png"></p>
-<ul>
-<li>Image texture<br>贴图。</li>
-<li><strong>Rgb spectrum</strong><br>纯色；也可作为值（有明暗的都可以作为值）。</li>
-</ul>
-<h2 id="纹理调整节点"><a href="#纹理调整节点" class="headerlink" title="纹理调整节点"></a>纹理调整节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb19080a.png" alt="OC核心-18.png"></p>
-<p>对应的就是在贴图中调节贴图的投射方式和变换。</p>
-<h2 id="自带纹理节点"><a href="#自带纹理节点" class="headerlink" title="自带纹理节点"></a>自带纹理节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb17274c.png" alt="OC核心-19.png"></p>
-<ul>
-<li><strong>Checker</strong><br>棋盘格；可作为值。</li>
-<li><strong>Octane noise</strong><br>OC噪波。</li>
-</ul>
-<h2 id="调色节点"><a href="#调色节点" class="headerlink" title="调色节点"></a>调色节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb1b3abc.png" alt="OC核心-20.png"></p>
-<ul>
-<li><strong>Color correction</strong><br>调整色相、饱和度、亮度。<br>要连在贴图节点和材质节点中间。<br><img src="https://bu.dusays.com/2024/10/18/67127fb978647.png" alt="OC核心-21.png"></li>
-<li><strong>Octane gradient</strong><br>生成渐变纹理；对贴图调色（用色带上的颜色映射贴图里的明暗区域）。</li>
-<li><strong>Mix</strong><br>混合多个贴图。</li>
-</ul>
+<h1 id="我的练习"><a href="#我的练习" class="headerlink" title="我的练习"></a>我的练习</h1><img src="https://bu.dusays.com/2024/10/14/670cd1e52af2f.gif" width = 400>
+
 ]]></content>
       <categories>
         <category>软件教程</category>
       </categories>
       <tags>
-        <tag>C4D渲染</tag>
+        <tag>AE插件</tag>
       </tags>
   </entry>
   <entry>
@@ -153,6 +109,58 @@
       <tags>
         <tag>剧情</tag>
         <tag>爱情</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>冲突</title>
+    <url>/2024/10/18/%E5%86%B2%E7%AA%81/</url>
+    <content><![CDATA[<blockquote>
+<p>参考：<br><a href="https://www.bilibili.com/video/BV1o82mYDEBQ">studio binder-如何构建冲突</a></p>
+</blockquote>
+<p>两种对立的力量相遇（比如当某些事物阻碍角色实现目标的时候），就会产生冲突。</p>
+<h1 id="三种类型"><a href="#三种类型" class="headerlink" title="三种类型"></a>三种类型</h1><p>故事中的冲突往往是其中之一或多个的组合。</p>
+<h2 id="内在冲突"><a href="#内在冲突" class="headerlink" title="内在冲突"></a>内在冲突</h2><p>指来自角色内心的阻碍。<br>这也意味着这是一个多维度（内心复杂、充满矛盾）的立体角色，他内心的阻碍通常源于他之前的经历。<br>内在冲突通常发生在角色接受自己身份的过程，或者道德困境中。</p>
+<p>举例：</p>
+<ul>
+<li>《狂飙》老默</li>
+<li>《心灵捕手》马特·达蒙</li>
+<li>《唐山大地震》徐帆选择救儿子还是女儿</li>
+</ul>
+<h2 id="个人冲突"><a href="#个人冲突" class="headerlink" title="个人冲突"></a>个人冲突</h2><p>指其他角色造成的阻碍。<br>最常见的来源就是反派角色（与主角截然相反的人，其目标与主角直接矛盾），还会来自于爱情关系、家庭或亲情关系、友情关系、工作关系等。</p>
+<p>举例：</p>
+<ul>
+<li>《猫鼠游戏》汤姆·汉克斯和莱昂纳多</li>
+<li>《尽善尽美》尼克尔森和小狗</li>
+<li>《怦然心动》男女主角</li>
+</ul>
+<h2 id="超个人冲突"><a href="#超个人冲突" class="headerlink" title="超个人冲突"></a>超个人冲突</h2><p>指来自于角色或角色群体之外的阻碍。<br>最常见的来源是自然界（具有远超角色控制范围的力量），另一种来源是文化社会。</p>
+<p>举例：</p>
+<ul>
+<li>《2012》自然灾害</li>
+<li>《迷雾》克苏鲁怪物</li>
+<li>《熔炉》官商勾结</li>
+</ul>
+]]></content>
+      <categories>
+        <category>编剧知识</category>
+      </categories>
+      <tags>
+        <tag>剧作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>出走的决心 | 2024</title>
+    <url>/2024/09/26/%E5%87%BA%E8%B5%B0%E7%9A%84%E5%86%B3%E5%BF%83_2024/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>我相信故事原型肯定更复杂多面，但这个片子更像是个爽文，像是个让女性脱离现实生活的2小时体验卡。这个故事，提出问题，不分析问题，或者说因为问题太多根本顾不上分析问题，然后容不得一口喘气，就不得不以粗暴的方式“解决”问题，就像李红这个角色本身一样。电影之后，“明事理”这三个字在现实生活中，该加引号的还是会加，没有引号的还是没有。</p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>视听语言比较单一，经常在主体和镜头中间放个什么半遮一下，刻意营造空间感，音乐音效也铺得太满。故事的推进也总有一些电影之外的力量在干预，似乎总能听到一句“得想办法让她xxx了”，角色的生命活力不像是自己的。</p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>题材是好的，故事是真的，但作为电影能有8.6分，不知道该叹一声的是观众在这个萧条的创作环境里更难重视影视审美，还是想要出走的女性已经有太多都难抑自己的决心。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>家庭</tag>
       </tags>
   </entry>
   <entry>
@@ -354,6 +362,93 @@
       </tags>
   </entry>
   <entry>
+    <title>对不起，我们错过了你 | 2019</title>
+    <url>/2020/03/20/%E5%AF%B9%E4%B8%8D%E8%B5%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E9%94%99%E8%BF%87%E4%BA%86%E4%BD%A0_2019/</url>
+    <content><![CDATA[<p>观影日期：2020.3.19</p>
+<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><h2 id="影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到"><a href="#影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到" class="headerlink" title="影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到"></a>影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到</h2><p>父亲从起床到写字条，再到上车发动汽车，这个过程丝毫没有表现家人的反应，观众潜意识会认为家人还在睡觉。而当发动机启动的时候，儿子从画面右侧的突然入画阻止父亲，会让观众发现其实儿子刚才一直在注意着父亲。<br>由于之前有儿子夜里主动来问父亲伤势的情节，所以此时儿子的突然出现和阻拦并不突兀。这在侧面强化了儿子理解父亲的现况，也使儿子这一角色的塑造更丰满，同时在关于这对父子的矛盾关系的问题上也给出了明确的结局。</p>
+<h2 id="影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整"><a href="#影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整" class="headerlink" title="影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整"></a>影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整</h2><p>快递站老板对父亲讲的各种工作注意事项，都在后来的情节中有所对照，如“不能上班必须找人替班”、“快递扫描枪如果损坏需要赔偿”等。<br>对于“你开车睡着然后撞上客车”，影片有两次对照：第一次是父亲在开车时睡着，正巧经过一处施工地段，但有惊无险；第二次是结尾处父亲在身体虚弱的状况下开车前往快递站。<br>第一次给了观众一个较弱的吸引力，因为观众较大可能会猜到有惊无险的结果，而第二次在第一次的基础上，再次抛给观众同样的猜测，这次的吸引力则会更强一些。<br>对于第二次，一方面降低了让观众猜对是否会发生事故的可能性，同时结束影片，留下了开放的想象空间，另一方面模糊了事故发生与否的未知结果，即认同了事故发生的可能性，这与前面老板的话形成了一定的对照关系，使剧作更加完整。</p>
+<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="为什么父亲、母亲、儿子三个人始终用的都是苹果手机？"><a href="#为什么父亲、母亲、儿子三个人始终用的都是苹果手机？" class="headerlink" title="为什么父亲、母亲、儿子三个人始终用的都是苹果手机？"></a>为什么父亲、母亲、儿子三个人始终用的都是苹果手机？</h2><p>这个家庭的经济水平似乎不足以支撑购买3部苹果手机。即使苹果手机像儿子的冬季大衣一样，是在之前经济条件还没有很差的时候买的，但后来却没有换成价格较低的手机以补贴家用。<br>苹果手机在品牌和价格上并非像儿子那件“可能再也买不起”的冬季大衣一样是不可替代品。影片在道具上没有选择价格相对符合这个家庭经济支出水平的手机，也没有交代不换手机的缘由。</p>
+<h2 id="母亲为什么会做一份护理员的工作？"><a href="#母亲为什么会做一份护理员的工作？" class="headerlink" title="母亲为什么会做一份护理员的工作？"></a>母亲为什么会做一份护理员的工作？</h2><p>影片似乎没有较明确地表达出母亲对护理员工作的积极态度，但也没有表现母亲在家庭经济水平变差后是否有换工作的打算。<br>另外我觉得添加一个对于母亲在故事之初就在做护理员工作的来由，会更完整一些。</p>
+<h2 id="最初与快递站老板发生冲突的那个员工辞职了吗？"><a href="#最初与快递站老板发生冲突的那个员工辞职了吗？" class="headerlink" title="最初与快递站老板发生冲突的那个员工辞职了吗？"></a>最初与快递站老板发生冲突的那个员工辞职了吗？</h2><p>在父亲由于女儿在纸单上写了额外的话而被老板约谈的情节中，一个镜头中有个人在外貌上与之前和老板发生冲突的员工有些像，这可能会引起观众不必要的关注。</p>
+<h2 id="抢劫父亲货物的三个人，他们的出现有些唐突"><a href="#抢劫父亲货物的三个人，他们的出现有些唐突" class="headerlink" title="抢劫父亲货物的三个人，他们的出现有些唐突"></a>抢劫父亲货物的三个人，他们的出现有些唐突</h2><p>父亲送货时遇到不同客户的不同情节，如“你吃的是大象吗”、“球迷之争”、“被狗咬”、“给小费”等，都是独特且独立的。<br>但其中一次父亲要求客户出示证件，当时送的货物是手机，后来他被抢劫的货物也包含手机，观众可能会对二者之间可能存在的关联进行联想，尤其是父亲在要求客户出示证件时与对方发生了冲突，这就加强了“抢手机就是这个客户的报复行为”的暗示。但实际上二者之间却不存在关联，却可能会引起观众不必要的注意。<br>类似的是，“你吃的是大象吗”的客户在收货时正在打点滴，也可能会让观众联想到“这个人可能是被母亲护理的对象之一”，进而引起不必要的关注。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>家庭</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>夜行者 | 2014</title>
+    <url>/2020/03/26/%E5%A4%9C%E8%A1%8C%E8%80%85_2014/</url>
+    <content><![CDATA[<p>观影日期：2020.3.24</p>
+<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><p>路易斯和里克在餐馆外面等待警察与罪犯发生冲突的过程，很吊我的胃口。<br>从前两个警察进入餐馆，到其中一个罪犯从桌下掏出武器，再到后两个警察进入餐馆，整个过程我一直猜测和期待警察会先发制人，但居然是两个罪犯先行一步，并且其中一个还逃走了。<br>我觉得这一小段的悬疑感挺好，我现在的水平也说不出个所以然，就是觉得看着特别舒服。（语言匮乏…）</p>
+<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="追逐罪犯的过程中，撞到警车的是一辆红色车"><a href="#追逐罪犯的过程中，撞到警车的是一辆红色车" class="headerlink" title="追逐罪犯的过程中，撞到警车的是一辆红色车"></a>追逐罪犯的过程中，撞到警车的是一辆红色车</h2><p>路易斯开的也是一辆红色车，加上追车戏剪辑较快，容易错看成是路易斯的车。</p>
+<h2 id="罪犯为什么没有对路易斯开枪？"><a href="#罪犯为什么没有对路易斯开枪？" class="headerlink" title="罪犯为什么没有对路易斯开枪？"></a>罪犯为什么没有对路易斯开枪？</h2><p>我猜可能是警笛声越来越近，罪犯没工夫管路易斯了，但是感觉罪犯好像并没有很急或者很慌张。<br>我觉得可以让警笛声来得再稍微早一点，或者设计成罪犯的子弹恰好耗尽了。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>犯罪</tag>
+        <tag>惊悚</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>斯隆女士 | 2016</title>
+    <url>/2020/03/21/%E6%96%AF%E9%9A%86%E5%A5%B3%E5%A3%AB_2016/</url>
+    <content><![CDATA[<p>观影日期：2020.3.20</p>
+<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><h2 id="在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述"><a href="#在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述" class="headerlink" title="在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述"></a>在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述</h2><p>老实说，影片前半部分的很多关于双方说客博弈过程的细节，无论在影片内外我都不是很懂，但这并不影响我理清剧情脉络。</p>
+<p>对于普通观众来说，影片中说客之间的各种博弈行为可能很复杂以致难以理解，观众被一通由专业术语和复杂操作陈述组成的台词灌输后，可能一头雾水，容易丢失原有的关注点甚至失去观影的耐心。</p>
+<p>但该片中每次在这种可能情况出现的同时，都会有某个人物或某样物件，以符合故事真实为前提，简练概括地向观众再次陈述之前的复杂内容。这样有助于引导观众的注意点，也会强化观众对关键情节的印象。</p>
+<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="没有…"><a href="#没有…" class="headerlink" title="没有…"></a>没有…</h2><p>因为我并没完全看懂影片中说客们具体的博弈细节，所以…对这部影片而言，最需要精进的，可能是作为观众的我对于说客这个职业的常识的了解程度…（不过我觉得这部影片确实挺好看的）</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>悬疑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>热辣滚烫 | 2024</title>
+    <url>/2024/02/14/%E7%83%AD%E8%BE%A3%E6%BB%9A%E7%83%AB_2024/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>雷佳音赛前收了钱后对乐莹的态度转变过于唐突，缺乏说服力，我明白这是推动乐莹这个角色决心要为自己赢一次的催化剂之一，但如果把劈腿闺蜜的属性融进去，可能更顺畅和整合。</p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>其实看过乐莹倒地时的回忆后，才真正明白她决心赢一次之前经历了多么深刻的难过，但在那之前我会有种还没有足够的催化剂就决心想要赢一次了，观众会觉得她是挺难的，但好像还没那么难，会带着这种稍稍的疑惑一直跟角色走下去，直到从那些回忆里补全了角色的经历，才打消了疑惑，也明白乐莹一次次的说“我还能打”背后是怎样的决绝，但角色行为动机的合理性被滞后，容易减少观众对角色的移情。</p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>电影之外贾玲减脂增肌变化这么大，是这个片子在宣传上给我最大的印象，但是片子里关于减肥这事儿本身没有特意强调，这在故事里是个好的处理，但在宣发配合上可能会对观众有误导，容易把注意力引到对乐莹减肥具体的缘由和经过的期待上。</p>
+<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>贾玲戏外的健身结果为观众对乐莹竞技实力的猜测赋予了积极的增益。沙溢说过乐莹是补充名额报名的，所以赛前就说打不过就喊停，我当时觉得乐莹在这场比赛中肯定不会输的，会以意想不到但合理的方式赢战胜强大的对手，她应该没有那么强，但肯定不会很弱，而沙溢的劝说似乎是为了表现外界对乐莹的不看好和衬托她尚未外露的实力。结果刚打了几下，乐莹就招架不住，而且出了血，观众直接感受到乐莹的弱和她面对的情况有多残酷，也说明沙溢的劝说是真的在警告乐莹以及观众“不要大意”。在双方实力如此悬殊的前提下，也只有左拳是乐莹逆转劣势的杀手锏了，当她三下左拳成功击中对手的时候，镜头语言告诉我这就是乐莹赢的时刻，此时对手在一个很小的景别里被打出画框，让乐莹享受到独属于角色自己的赢的时刻，正当我准备质疑她仅靠三下左拳就击倒了对手的时候，对手在同样的景别里立刻反击，让我知道对手根本没有倒，只是趔趄了一下，既保持了实力悬殊的设定，又给了角色足够的尊重。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>喜剧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>惊天营救2 | 2023</title>
+    <url>/2023/06/23/%E6%83%8A%E5%A4%A9%E8%90%A5%E6%95%912_2023/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>20分钟一镜到底的效果确实很过瘾，从夜里到天亮，从监狱地道到山路、铁路，手枪、步枪、机枪以及各种重武器和近战武器，徒步、汽车、火车、摩托车、直升机，视觉刺激拉的很高，手心也总不自觉地握出汗，虽然片子看完没有哪个场景特别印象深刻，但节拍安排上带来的心理体验很满足，就像东北的乱炖，各种材料都有，你也不记得具体嗦进什么菜，但那么一大盆香喷喷的，确实让你嗦了个足饱。</p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>监狱暴动的场景让我想起《突袭2》。<br><img src="https://bu.dusays.com/2024/10/17/67112f0e64242.png" alt="惊天营救2-1.png"><br>锤哥被敲懵的第二人称镜头（可以这样叫吗）挺好玩的，感觉比第一人称更有效，可能是因为生活中没人会把自己固定在另一个人面前看他，这种视觉就更反常识，更不自然，肉眼也难确定参照物，更有晕的感觉。<br><img src="https://bu.dusays.com/2024/10/17/67112f0fe0619.png" alt="惊天营救2-2.png"><br>火拳也很有观赏性，跟《疾速追杀4》的龙息弹有点莫名照应。<br><img src="https://bu.dusays.com/2024/10/17/67112f108fe2f.png" alt="惊天营救2-3.png"></p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>山路追逐的场景想起来《人类之子》。<br><img src="https://bu.dusays.com/2024/10/17/67112f2e3382e.png" alt="惊天营救2-4.png"><br>火车上硬刚直升机想起来《使命召唤4》的最后一个关卡。<br><img src="https://bu.dusays.com/2024/10/17/67112f299589f.png" alt="惊天营救2-5.png"></p>
+<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>尼克一个女性面对两个男性精英兵还能打的有来有回，尽管她绝对是个狠角色，但这个战力可能还是有点夸张。<br><img src="https://bu.dusays.com/2024/10/17/67112f2b0b115.png" alt="惊天营救2-6.png"><br>我想要是能在这个狭小的火车头控制室空间里，多表现一些借助女性身材的灵活最终战胜相对笨重的敌人的动作，可能战力会更合理一点。</p>
+<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>另外，亚兹我一直感觉他要挂，有心理预期但还是会担心。<br><img src="https://bu.dusays.com/2024/10/17/67112f270804d.png" alt="惊天营救2-7.png"><br>原因可能是，安排他这个角色是个弟弟，心理上对他有种弱一些的潜在定位，然后先是火车上三个精英兵和他的遭遇战（还好锤哥解围），后是单独追熊孩子（姐姐及时救急），两次都没出事儿，“他要挂”的心理预期就收了收，然后第三回他在楼梯里遭遇对面两人，并且我记得他还很干脆的解决了其中一个，让我心想这次应该最多受点伤，结果因为手枪近距对射中了好几弹，一下子就有了落差，这个“担心”又提起来，并且因为基本确定这个角色要挂了，“担心”也瞬间变成了“伤心”。</p>
+<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>工作累的时候看看这种爽片好解压，20分钟一镜到底应该会是我这个直男以后累的时候，往沙发上一靠，手机一拿，经常看的精彩片段了。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>动作</tag>
+        <tag>惊悚</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常见物体折射率</title>
     <url>/2024/10/18/%E5%B8%B8%E8%A7%81%E7%89%A9%E4%BD%93%E6%8A%98%E5%B0%84%E7%8E%87/</url>
     <content><![CDATA[<p>氨 1.000036</p>
@@ -404,110 +499,6 @@
       </tags>
   </entry>
   <entry>
-    <title>夜行者 | 2014</title>
-    <url>/2020/03/26/%E5%A4%9C%E8%A1%8C%E8%80%85_2014/</url>
-    <content><![CDATA[<p>观影日期：2020.3.24</p>
-<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><p>路易斯和里克在餐馆外面等待警察与罪犯发生冲突的过程，很吊我的胃口。<br>从前两个警察进入餐馆，到其中一个罪犯从桌下掏出武器，再到后两个警察进入餐馆，整个过程我一直猜测和期待警察会先发制人，但居然是两个罪犯先行一步，并且其中一个还逃走了。<br>我觉得这一小段的悬疑感挺好，我现在的水平也说不出个所以然，就是觉得看着特别舒服。（语言匮乏…）</p>
-<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="追逐罪犯的过程中，撞到警车的是一辆红色车"><a href="#追逐罪犯的过程中，撞到警车的是一辆红色车" class="headerlink" title="追逐罪犯的过程中，撞到警车的是一辆红色车"></a>追逐罪犯的过程中，撞到警车的是一辆红色车</h2><p>路易斯开的也是一辆红色车，加上追车戏剪辑较快，容易错看成是路易斯的车。</p>
-<h2 id="罪犯为什么没有对路易斯开枪？"><a href="#罪犯为什么没有对路易斯开枪？" class="headerlink" title="罪犯为什么没有对路易斯开枪？"></a>罪犯为什么没有对路易斯开枪？</h2><p>我猜可能是警笛声越来越近，罪犯没工夫管路易斯了，但是感觉罪犯好像并没有很急或者很慌张。<br>我觉得可以让警笛声来得再稍微早一点，或者设计成罪犯的子弹恰好耗尽了。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>犯罪</tag>
-        <tag>惊悚</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>冲突</title>
-    <url>/2024/10/18/%E5%86%B2%E7%AA%81/</url>
-    <content><![CDATA[<blockquote>
-<p>参考：<br><a href="https://www.bilibili.com/video/BV1o82mYDEBQ">studio binder-如何构建冲突</a></p>
-</blockquote>
-<p>两种对立的力量相遇（比如当某些事物阻碍角色实现目标的时候），就会产生冲突。</p>
-<h1 id="三种类型"><a href="#三种类型" class="headerlink" title="三种类型"></a>三种类型</h1><p>故事中的冲突往往是其中之一或多个的组合。</p>
-<h2 id="内在冲突"><a href="#内在冲突" class="headerlink" title="内在冲突"></a>内在冲突</h2><p>指来自角色内心的阻碍。<br>这也意味着这是一个多维度（内心复杂、充满矛盾）的立体角色，他内心的阻碍通常源于他之前的经历。<br>内在冲突通常发生在角色接受自己身份的过程，或者道德困境中。</p>
-<p>举例：</p>
-<ul>
-<li>《狂飙》老默</li>
-<li>《心灵捕手》马特·达蒙</li>
-<li>《唐山大地震》徐帆选择救儿子还是女儿</li>
-</ul>
-<h2 id="个人冲突"><a href="#个人冲突" class="headerlink" title="个人冲突"></a>个人冲突</h2><p>指其他角色造成的阻碍。<br>最常见的来源就是反派角色（与主角截然相反的人，其目标与主角直接矛盾），还会来自于爱情关系、家庭或亲情关系、友情关系、工作关系等。</p>
-<p>举例：</p>
-<ul>
-<li>《猫鼠游戏》汤姆·汉克斯和莱昂纳多</li>
-<li>《尽善尽美》尼克尔森和小狗</li>
-<li>《怦然心动》男女主角</li>
-</ul>
-<h2 id="超个人冲突"><a href="#超个人冲突" class="headerlink" title="超个人冲突"></a>超个人冲突</h2><p>指来自于角色或角色群体之外的阻碍。<br>最常见的来源是自然界（具有远超角色控制范围的力量），另一种来源是文化社会。</p>
-<p>举例：</p>
-<ul>
-<li>《2012》自然灾害</li>
-<li>《迷雾》克苏鲁怪物</li>
-<li>《熔炉》官商勾结</li>
-</ul>
-]]></content>
-      <categories>
-        <category>编剧知识</category>
-      </categories>
-      <tags>
-        <tag>剧作</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>出走的决心 | 2024</title>
-    <url>/2024/09/26/%E5%87%BA%E8%B5%B0%E7%9A%84%E5%86%B3%E5%BF%83_2024/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>我相信故事原型肯定更复杂多面，但这个片子更像是个爽文，像是个让女性脱离现实生活的2小时体验卡。这个故事，提出问题，不分析问题，或者说因为问题太多根本顾不上分析问题，然后容不得一口喘气，就不得不以粗暴的方式“解决”问题，就像李红这个角色本身一样。电影之后，“明事理”这三个字在现实生活中，该加引号的还是会加，没有引号的还是没有。</p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>视听语言比较单一，经常在主体和镜头中间放个什么半遮一下，刻意营造空间感，音乐音效也铺得太满。故事的推进也总有一些电影之外的力量在干预，似乎总能听到一句“得想办法让她xxx了”，角色的生命活力不像是自己的。</p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>题材是好的，故事是真的，但作为电影能有8.6分，不知道该叹一声的是观众在这个萧条的创作环境里更难重视影视审美，还是想要出走的女性已经有太多都难抑自己的决心。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>家庭</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>惊天营救2 | 2023</title>
-    <url>/2023/06/23/%E6%83%8A%E5%A4%A9%E8%90%A5%E6%95%912_2023/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>20分钟一镜到底的效果确实很过瘾，从夜里到天亮，从监狱地道到山路、铁路，手枪、步枪、机枪以及各种重武器和近战武器，徒步、汽车、火车、摩托车、直升机，视觉刺激拉的很高，手心也总不自觉地握出汗，虽然片子看完没有哪个场景特别印象深刻，但节拍安排上带来的心理体验很满足，就像东北的乱炖，各种材料都有，你也不记得具体嗦进什么菜，但那么一大盆香喷喷的，确实让你嗦了个足饱。</p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>监狱暴动的场景让我想起《突袭2》。<br><img src="https://bu.dusays.com/2024/10/17/67112f0e64242.png" alt="惊天营救2-1.png"><br>锤哥被敲懵的第二人称镜头（可以这样叫吗）挺好玩的，感觉比第一人称更有效，可能是因为生活中没人会把自己固定在另一个人面前看他，这种视觉就更反常识，更不自然，肉眼也难确定参照物，更有晕的感觉。<br><img src="https://bu.dusays.com/2024/10/17/67112f0fe0619.png" alt="惊天营救2-2.png"><br>火拳也很有观赏性，跟《疾速追杀4》的龙息弹有点莫名照应。<br><img src="https://bu.dusays.com/2024/10/17/67112f108fe2f.png" alt="惊天营救2-3.png"></p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>山路追逐的场景想起来《人类之子》。<br><img src="https://bu.dusays.com/2024/10/17/67112f2e3382e.png" alt="惊天营救2-4.png"><br>火车上硬刚直升机想起来《使命召唤4》的最后一个关卡。<br><img src="https://bu.dusays.com/2024/10/17/67112f299589f.png" alt="惊天营救2-5.png"></p>
-<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>尼克一个女性面对两个男性精英兵还能打的有来有回，尽管她绝对是个狠角色，但这个战力可能还是有点夸张。<br><img src="https://bu.dusays.com/2024/10/17/67112f2b0b115.png" alt="惊天营救2-6.png"><br>我想要是能在这个狭小的火车头控制室空间里，多表现一些借助女性身材的灵活最终战胜相对笨重的敌人的动作，可能战力会更合理一点。</p>
-<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>另外，亚兹我一直感觉他要挂，有心理预期但还是会担心。<br><img src="https://bu.dusays.com/2024/10/17/67112f270804d.png" alt="惊天营救2-7.png"><br>原因可能是，安排他这个角色是个弟弟，心理上对他有种弱一些的潜在定位，然后先是火车上三个精英兵和他的遭遇战（还好锤哥解围），后是单独追熊孩子（姐姐及时救急），两次都没出事儿，“他要挂”的心理预期就收了收，然后第三回他在楼梯里遭遇对面两人，并且我记得他还很干脆的解决了其中一个，让我心想这次应该最多受点伤，结果因为手枪近距对射中了好几弹，一下子就有了落差，这个“担心”又提起来，并且因为基本确定这个角色要挂了，“担心”也瞬间变成了“伤心”。</p>
-<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>工作累的时候看看这种爽片好解压，20分钟一镜到底应该会是我这个直男以后累的时候，往沙发上一靠，手机一拿，经常看的精彩片段了。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>动作</tag>
-        <tag>惊悚</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>斯隆女士 | 2016</title>
-    <url>/2020/03/21/%E6%96%AF%E9%9A%86%E5%A5%B3%E5%A3%AB_2016/</url>
-    <content><![CDATA[<p>观影日期：2020.3.20</p>
-<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><h2 id="在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述"><a href="#在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述" class="headerlink" title="在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述"></a>在每次人物在做出关键行为的同时，影片基本都能通过合适的方式对观众做出一定的概括和复述</h2><p>老实说，影片前半部分的很多关于双方说客博弈过程的细节，无论在影片内外我都不是很懂，但这并不影响我理清剧情脉络。</p>
-<p>对于普通观众来说，影片中说客之间的各种博弈行为可能很复杂以致难以理解，观众被一通由专业术语和复杂操作陈述组成的台词灌输后，可能一头雾水，容易丢失原有的关注点甚至失去观影的耐心。</p>
-<p>但该片中每次在这种可能情况出现的同时，都会有某个人物或某样物件，以符合故事真实为前提，简练概括地向观众再次陈述之前的复杂内容。这样有助于引导观众的注意点，也会强化观众对关键情节的印象。</p>
-<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="没有…"><a href="#没有…" class="headerlink" title="没有…"></a>没有…</h2><p>因为我并没完全看懂影片中说客们具体的博弈细节，所以…对这部影片而言，最需要精进的，可能是作为观众的我对于说客这个职业的常识的了解程度…（不过我觉得这部影片确实挺好看的）</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>悬疑</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>极速风流 | 2013</title>
     <url>/2020/03/23/%E6%9E%81%E9%80%9F%E9%A3%8E%E6%B5%81_2013/</url>
     <content><![CDATA[<p>观影日期：2020.3.22</p>
@@ -524,6 +515,47 @@
         <tag>剧情</tag>
         <tag>传记</tag>
         <tag>运动</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>热烈 | 2023</title>
+    <url>/2024/03/05/%E7%83%AD%E7%83%88_2023/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>这是一个走向成功的经典故事套路，故事的走向和《缝纫机乐队》同质化严重，但人物内心的弧线不如后者更整，两个片子都是讲追求喜欢的事儿，都有努力，但后者更多强调的是人物内心对“坚持”的挣扎，而《热烈》把更多笔墨放在了陈烁、丁雷所经历的各种客观事件以及应对结果，努力辛苦的过程还是通过司空见惯的一两分钟剪辑的方式匆匆略过（《热辣滚烫》在这方面也是），观众对主角的努力不能移情，只能像看着某个其他人的成功觉得“挺厉害的”。这种呈现出来的“励志”对于观众来讲只是一种旁观得到的感受，就像过年时候亲戚跟你说你小时候一起玩的表哥现在做了大公司高管，你也很为他高兴，但你们好多年没见了，所以你只能远远的为他高兴。</p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>​走向负面的辛苦也没有足够呈现，比如丁雷在KTV跟老朋友叙旧、跳舞、忆往昔，人物特别沉醉，但观众更像是进包房送酒水的服务生，虽然看得出这些人跟自己一样生活不易，但更共有同感的是自己也曾和朋友喝酒诉苦的场景。对了，KTV会老友这个地方我觉得自己的思考过程挺好玩，丁雷没能跟老友借到钱，心灰的时候给陈烁发微信打字说“明天你不用来了”然后删掉，我在想如果不删，转到下一场景陈烁直接收到“明天咱俩聊一下”，会更简洁，但后来一想，这样的话会显得丁雷更像是个干脆爽直的性格，就不贴合角色了。</p>
+<p>​再比如，陈烁妈妈为了儿子终于还是上台演唱了，陈烁看到后忍不住眼泪的情感逻辑是对的，但观众情绪体验的递进是缺的，观众只知道妈妈唱歌就会勾起对爸爸的回忆，但不知道妈妈在唱歌和爱人的关联事件上经历了什么样的负面情节，也就感受不到这个回忆会给她带来怎样的痛，进而也感觉不到男主看到这一幕的心里冲击的力度。有的东西还是有必要演出来让观众亲历一遍（比如《第二十条》王永强夫妇被虐待的场景回溯），听说是不够的。相比陈烁，妈妈和张海宇的B故事更吸引我。</p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>​主要人物的转变全靠回忆杀，回忆的还不是自己，而是其他人，透出一种“我要是这么做，好像挺对不起xxx的啊”的被动驱动意味，可是一个人如果真正热爱一件事本身，虽然可以迷失自己和精神潦倒、可以在自身之外获得安慰和鼓励，但在自我质疑中选择继续的决心和核心动力从来都是从自身对事物最原始的喜欢里获得的。而且每到人物内心反思的时候，就会出现煽情的小旋律，这个确实有点太老套了，让反思本身减少了力度。</p>
+<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>投票卡片里的“凯文out”还挺抓我的，在心里激起那么一点点波澜，然后虚惊一次，有种从去年收好的大衣兜里翻到钱的失而复得的快感，尽管那本来就是自己的钱。</p>
+<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>小沈阳的剧团表演的主要是经典文艺，而且会把两种表演不经有机融合地放在一起，比如空竹+街舞，给我一种十八线的演艺小团体的印象，透出一种谋生的无奈和现实感。但后来他们看陈烁比赛的时候，小沈阳说难度不高，要空竹的演员却说:“别看难度不高，他跳的是文化。”让我感觉到，这些“小演员”是真的喜欢自己的手艺，虽然迫于生计呆在不知名的小团体，但她们对自己热爱的事有更深刻的理解，并不执迷于形式技巧的繁复，却更在意艺术最重要的那小小的核。这也契合了片子的主控思想，以及丁雷决赛时候说的那句“比赛可以输，但惊叹号不能输所指的对热爱的事的纯粹。另外空竹演员说出的这句话，也暗示了惊叹号最终靠团队文化的表达获胜的结局。这一句台词真让我喜欢。进一步联系到整个片子，我觉得大鹏的商业片确实会有老套的情节，但我总能从他的片子里不经意间感觉到真诚的生活气息和角色对所爱事物的劲头，不过如果《热烈》核心能在讲“喜欢做就纯粹一点的基础上更强调这个“文化”，让观众能认知到惊叹号成员、凯文甚至比赛现场的其他舞者和看台观众们对街舞文化的热烈，可能会更好（尤其凯文不够立体，像是个单纯的反派）。</p>
+<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>第三幕高潮戏的对抗，双方通过在动作花样上的创新进行比拼，我的注意力也一直在各种漂亮的动作上，毕竟舞蹈和动作直接相关，动作也会很直接的影响视听的表现方式，我本来还猜最后要怎么取胜，结果原来是靠文化和精神，有点意想不到。而且惊叹号这个队名透出的个性和张扬也很符合街舞这种艺术的风格，但没想到它是有故事的，让人想默默点头。一个最终的动作达成了故事A故事的结局、带出来主角队伍的精神内核、让丁雷的人物曲线更完整，这一刻是很爽的。第三幕的街舞确实好看，让我联想到看印度电影歌舞部分的感觉，但一时分辨不出是因为街舞动作的精彩还是视听语言托举的精妙，下次应该单独拎出来再看看，琢磨一下大鹏是怎么拍的。</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>喜剧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第二十条 | 2024</title>
+    <url>/2024/02/13/%E7%AC%AC%E4%BA%8C%E5%8D%81%E6%9D%A1_2024/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>这片子的海报有几张感觉跟故事完全无关。<br><img src="https://bu.dusays.com/2024/10/14/670ce81f34732.jpeg" width = 300><br><img src="https://bu.dusays.com/2024/10/14/670ce81ee2dfa.jpeg" width = 300><br><img src="https://bu.dusays.com/2024/10/14/670ce81ee4922.jpeg" width = 300></p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>所有角色都没有成长，只有主角韩明在剧作结构的必然安排下从一个小孩变成了一个穿西装的小孩，观众们好像听到一句“你该长大啦”，就完成了对韩明成长的见证。</p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>校园霸凌事实的查明只是一嘴带过，观众和角色一样根本没参与到查的过程，求证全靠学校保卫科，剩下的就是在外围转圈。人物也确实在不断处理手中的麻烦，直到疲于应对的时候终于查明白了，故事才有所变化。其实人物一直在瞎忙活，最关键的求证霸凌事实一直没进展，只不过人物忙了一圈累的吭哧瘪肚，是人家保卫科刚好齐活儿了。故事的发展跟人物的努力没关系，故事的发展要看编剧什么时候把霸凌证据递给保卫科。</p>
+<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>韩明儿子在看到霸凌的时候基本没犹豫就上前了，可他所有的勇气从此耗尽。一个青少年，面对高考，又是当事人，而且自觉不公，这样一个人物在引出事件之后就被编剧把网线给掐了。霸凌者父亲不撤诉、自己被小混混打、妈妈被拘留等等，似乎都不会刺激他主动去找被霸凌的同学请求作证，或在情绪积压下去报复霸凌者或其父亲，但他实际上甚至没有公交司机女儿更有主观能动性。</p>
+<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>在这个片子里看韩明夫妻吵嘴，就像在面试现场看到穿泳裤的求职者。吵嘴似乎只是为了喜剧效果，对情节推动没有作用，吵来吵去并没有消停也没有更激烈，甚至内容都只是同质化的情绪输出，你说我一嘴我反问一句，同一句话来来回回，谁也不让它掉地上。把这种聒噪和不依不饶放在霸凌者父亲对韩明夫妻的态度上，这样的霸凌者父亲应该比片子里还挺讲理的形象更接近现实，也更容易形成有利于推进情节的戏剧冲突。韩明夫妻吵了至少三回，直觉上感觉吵了半个小时，我都有种在看一部讲家长里短柴米油盐的电影的错觉，这时看看海报上写的“我爱我家”好像就显得十分合适了。<br><img src="https://bu.dusays.com/2024/10/14/670ce952ee3b5.jpeg" width = 300><br>141分钟的时长好像容不下一个不讲理的霸凌者父亲形象带来的情节生枝，但对难以休止的夫妻掰扯的“家常逗趣味”似乎无比包容。要是直接删了或许能多留出几场排片，也挺好的。</p>
+<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>韩明夫妻在车上喊公交司机张贵生的那段在语言上挺好笑的，但是有点脱离现实和刻意搞笑，尤其紧接着的是张贵生被货车撞，还撞的那么猛，让我感觉张贵生这个人物被戏弄了，好像我这个观众也被戏弄了，就像是自己在被笑话逗得哈哈大笑的时候被讲笑话的人给了一大嘴巴问:“你特么不知道世界多惨吗?”</p>
+<h1 id="07"><a href="#07" class="headerlink" title="07"></a>07</h1><p>韩明和吕玲玲、田检和吕玲玲的感情关系也不是必要的，它们的存在似乎也是为了增加喜剧效果。相比刻意营造的笑料，小卖部里乔杉和蒋诗萌的部分更自然和合适。</p>
+<h1 id="08"><a href="#08" class="headerlink" title="08"></a>08</h1><p>听证会上王永强夫妻被虐待的场景再现是全片里最严肃的部分，也是我觉得气质上最符合这个题材的的部分，放在最后的煽情之前，让观众亲自经历悲剧，迅速垫起了一个想鸣不平的情绪底子，这让韩明的发言有了情感上的合理性，同时发言内容也有逻辑的合理性，也就让煽情不那么强煽。但是音乐还是太廉价了，像是从素材网站上找的。不过片子里人们为韩明鼓掌的时候，电影院里也能听见几下鼓掌，难说是因为电影里的这段说进观众心里了，还是因为观众看进电影里去了，这倒是让我很感动。</p>
+<h1 id="09"><a href="#09" class="headerlink" title="09"></a>09</h1><p>另外想问，学校里被保护的学生和公交车上被保护的女生去哪了？</p>
+]]></content>
+      <categories>
+        <category>影评</category>
+      </categories>
+      <tags>
+        <tag>剧情</tag>
+        <tag>家庭</tag>
+        <tag>喜剧</tag>
       </tags>
   </entry>
   <entry>
@@ -585,66 +617,6 @@
       </tags>
   </entry>
   <entry>
-    <title>对不起，我们错过了你 | 2019</title>
-    <url>/2020/03/20/%E5%AF%B9%E4%B8%8D%E8%B5%B7%EF%BC%8C%E6%88%91%E4%BB%AC%E9%94%99%E8%BF%87%E4%BA%86%E4%BD%A0_2019/</url>
-    <content><![CDATA[<p>观影日期：2020.3.19</p>
-<h1 id="01-我觉得好的地方"><a href="#01-我觉得好的地方" class="headerlink" title="01 我觉得好的地方"></a>01 我觉得好的地方</h1><h2 id="影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到"><a href="#影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到" class="headerlink" title="影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到"></a>影片接近结尾处，父亲准备悄悄开车上班时，儿子的出现很意想不到</h2><p>父亲从起床到写字条，再到上车发动汽车，这个过程丝毫没有表现家人的反应，观众潜意识会认为家人还在睡觉。而当发动机启动的时候，儿子从画面右侧的突然入画阻止父亲，会让观众发现其实儿子刚才一直在注意着父亲。<br>由于之前有儿子夜里主动来问父亲伤势的情节，所以此时儿子的突然出现和阻拦并不突兀。这在侧面强化了儿子理解父亲的现况，也使儿子这一角色的塑造更丰满，同时在关于这对父子的矛盾关系的问题上也给出了明确的结局。</p>
-<h2 id="影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整"><a href="#影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整" class="headerlink" title="影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整"></a>影片结尾处没有明确交代父亲是否遭遇车祸、是否被老板开除等，既留下开放的想象空间，也确保了剧作的完整</h2><p>快递站老板对父亲讲的各种工作注意事项，都在后来的情节中有所对照，如“不能上班必须找人替班”、“快递扫描枪如果损坏需要赔偿”等。<br>对于“你开车睡着然后撞上客车”，影片有两次对照：第一次是父亲在开车时睡着，正巧经过一处施工地段，但有惊无险；第二次是结尾处父亲在身体虚弱的状况下开车前往快递站。<br>第一次给了观众一个较弱的吸引力，因为观众较大可能会猜到有惊无险的结果，而第二次在第一次的基础上，再次抛给观众同样的猜测，这次的吸引力则会更强一些。<br>对于第二次，一方面降低了让观众猜对是否会发生事故的可能性，同时结束影片，留下了开放的想象空间，另一方面模糊了事故发生与否的未知结果，即认同了事故发生的可能性，这与前面老板的话形成了一定的对照关系，使剧作更加完整。</p>
-<h1 id="02-我觉得可以更精进的地方"><a href="#02-我觉得可以更精进的地方" class="headerlink" title="02 我觉得可以更精进的地方"></a>02 我觉得可以更精进的地方</h1><h2 id="为什么父亲、母亲、儿子三个人始终用的都是苹果手机？"><a href="#为什么父亲、母亲、儿子三个人始终用的都是苹果手机？" class="headerlink" title="为什么父亲、母亲、儿子三个人始终用的都是苹果手机？"></a>为什么父亲、母亲、儿子三个人始终用的都是苹果手机？</h2><p>这个家庭的经济水平似乎不足以支撑购买3部苹果手机。即使苹果手机像儿子的冬季大衣一样，是在之前经济条件还没有很差的时候买的，但后来却没有换成价格较低的手机以补贴家用。<br>苹果手机在品牌和价格上并非像儿子那件“可能再也买不起”的冬季大衣一样是不可替代品。影片在道具上没有选择价格相对符合这个家庭经济支出水平的手机，也没有交代不换手机的缘由。</p>
-<h2 id="母亲为什么会做一份护理员的工作？"><a href="#母亲为什么会做一份护理员的工作？" class="headerlink" title="母亲为什么会做一份护理员的工作？"></a>母亲为什么会做一份护理员的工作？</h2><p>影片似乎没有较明确地表达出母亲对护理员工作的积极态度，但也没有表现母亲在家庭经济水平变差后是否有换工作的打算。<br>另外我觉得添加一个对于母亲在故事之初就在做护理员工作的来由，会更完整一些。</p>
-<h2 id="最初与快递站老板发生冲突的那个员工辞职了吗？"><a href="#最初与快递站老板发生冲突的那个员工辞职了吗？" class="headerlink" title="最初与快递站老板发生冲突的那个员工辞职了吗？"></a>最初与快递站老板发生冲突的那个员工辞职了吗？</h2><p>在父亲由于女儿在纸单上写了额外的话而被老板约谈的情节中，一个镜头中有个人在外貌上与之前和老板发生冲突的员工有些像，这可能会引起观众不必要的关注。</p>
-<h2 id="抢劫父亲货物的三个人，他们的出现有些唐突"><a href="#抢劫父亲货物的三个人，他们的出现有些唐突" class="headerlink" title="抢劫父亲货物的三个人，他们的出现有些唐突"></a>抢劫父亲货物的三个人，他们的出现有些唐突</h2><p>父亲送货时遇到不同客户的不同情节，如“你吃的是大象吗”、“球迷之争”、“被狗咬”、“给小费”等，都是独特且独立的。<br>但其中一次父亲要求客户出示证件，当时送的货物是手机，后来他被抢劫的货物也包含手机，观众可能会对二者之间可能存在的关联进行联想，尤其是父亲在要求客户出示证件时与对方发生了冲突，这就加强了“抢手机就是这个客户的报复行为”的暗示。但实际上二者之间却不存在关联，却可能会引起观众不必要的注意。<br>类似的是，“你吃的是大象吗”的客户在收货时正在打点滴，也可能会让观众联想到“这个人可能是被母亲护理的对象之一”，进而引起不必要的关注。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>家庭</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第二十条 | 2024</title>
-    <url>/2024/02/13/%E7%AC%AC%E4%BA%8C%E5%8D%81%E6%9D%A1_2024/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>这片子的海报有几张感觉跟故事完全无关。<br><img src="https://bu.dusays.com/2024/10/14/670ce81f34732.jpeg" width = 300><br><img src="https://bu.dusays.com/2024/10/14/670ce81ee2dfa.jpeg" width = 300><br><img src="https://bu.dusays.com/2024/10/14/670ce81ee4922.jpeg" width = 300></p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>所有角色都没有成长，只有主角韩明在剧作结构的必然安排下从一个小孩变成了一个穿西装的小孩，观众们好像听到一句“你该长大啦”，就完成了对韩明成长的见证。</p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>校园霸凌事实的查明只是一嘴带过，观众和角色一样根本没参与到查的过程，求证全靠学校保卫科，剩下的就是在外围转圈。人物也确实在不断处理手中的麻烦，直到疲于应对的时候终于查明白了，故事才有所变化。其实人物一直在瞎忙活，最关键的求证霸凌事实一直没进展，只不过人物忙了一圈累的吭哧瘪肚，是人家保卫科刚好齐活儿了。故事的发展跟人物的努力没关系，故事的发展要看编剧什么时候把霸凌证据递给保卫科。</p>
-<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>韩明儿子在看到霸凌的时候基本没犹豫就上前了，可他所有的勇气从此耗尽。一个青少年，面对高考，又是当事人，而且自觉不公，这样一个人物在引出事件之后就被编剧把网线给掐了。霸凌者父亲不撤诉、自己被小混混打、妈妈被拘留等等，似乎都不会刺激他主动去找被霸凌的同学请求作证，或在情绪积压下去报复霸凌者或其父亲，但他实际上甚至没有公交司机女儿更有主观能动性。</p>
-<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>在这个片子里看韩明夫妻吵嘴，就像在面试现场看到穿泳裤的求职者。吵嘴似乎只是为了喜剧效果，对情节推动没有作用，吵来吵去并没有消停也没有更激烈，甚至内容都只是同质化的情绪输出，你说我一嘴我反问一句，同一句话来来回回，谁也不让它掉地上。把这种聒噪和不依不饶放在霸凌者父亲对韩明夫妻的态度上，这样的霸凌者父亲应该比片子里还挺讲理的形象更接近现实，也更容易形成有利于推进情节的戏剧冲突。韩明夫妻吵了至少三回，直觉上感觉吵了半个小时，我都有种在看一部讲家长里短柴米油盐的电影的错觉，这时看看海报上写的“我爱我家”好像就显得十分合适了。<br><img src="https://bu.dusays.com/2024/10/14/670ce952ee3b5.jpeg" width = 300><br>141分钟的时长好像容不下一个不讲理的霸凌者父亲形象带来的情节生枝，但对难以休止的夫妻掰扯的“家常逗趣味”似乎无比包容。要是直接删了或许能多留出几场排片，也挺好的。</p>
-<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>韩明夫妻在车上喊公交司机张贵生的那段在语言上挺好笑的，但是有点脱离现实和刻意搞笑，尤其紧接着的是张贵生被货车撞，还撞的那么猛，让我感觉张贵生这个人物被戏弄了，好像我这个观众也被戏弄了，就像是自己在被笑话逗得哈哈大笑的时候被讲笑话的人给了一大嘴巴问:“你特么不知道世界多惨吗?”</p>
-<h1 id="07"><a href="#07" class="headerlink" title="07"></a>07</h1><p>韩明和吕玲玲、田检和吕玲玲的感情关系也不是必要的，它们的存在似乎也是为了增加喜剧效果。相比刻意营造的笑料，小卖部里乔杉和蒋诗萌的部分更自然和合适。</p>
-<h1 id="08"><a href="#08" class="headerlink" title="08"></a>08</h1><p>听证会上王永强夫妻被虐待的场景再现是全片里最严肃的部分，也是我觉得气质上最符合这个题材的的部分，放在最后的煽情之前，让观众亲自经历悲剧，迅速垫起了一个想鸣不平的情绪底子，这让韩明的发言有了情感上的合理性，同时发言内容也有逻辑的合理性，也就让煽情不那么强煽。但是音乐还是太廉价了，像是从素材网站上找的。不过片子里人们为韩明鼓掌的时候，电影院里也能听见几下鼓掌，难说是因为电影里的这段说进观众心里了，还是因为观众看进电影里去了，这倒是让我很感动。</p>
-<h1 id="09"><a href="#09" class="headerlink" title="09"></a>09</h1><p>另外想问，学校里被保护的学生和公交车上被保护的女生去哪了？</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>家庭</tag>
-        <tag>喜剧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>热烈 | 2023</title>
-    <url>/2024/03/05/%E7%83%AD%E7%83%88_2023/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>这是一个走向成功的经典故事套路，故事的走向和《缝纫机乐队》同质化严重，但人物内心的弧线不如后者更整，两个片子都是讲追求喜欢的事儿，都有努力，但后者更多强调的是人物内心对“坚持”的挣扎，而《热烈》把更多笔墨放在了陈烁、丁雷所经历的各种客观事件以及应对结果，努力辛苦的过程还是通过司空见惯的一两分钟剪辑的方式匆匆略过（《热辣滚烫》在这方面也是），观众对主角的努力不能移情，只能像看着某个其他人的成功觉得“挺厉害的”。这种呈现出来的“励志”对于观众来讲只是一种旁观得到的感受，就像过年时候亲戚跟你说你小时候一起玩的表哥现在做了大公司高管，你也很为他高兴，但你们好多年没见了，所以你只能远远的为他高兴。</p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>​走向负面的辛苦也没有足够呈现，比如丁雷在KTV跟老朋友叙旧、跳舞、忆往昔，人物特别沉醉，但观众更像是进包房送酒水的服务生，虽然看得出这些人跟自己一样生活不易，但更共有同感的是自己也曾和朋友喝酒诉苦的场景。对了，KTV会老友这个地方我觉得自己的思考过程挺好玩，丁雷没能跟老友借到钱，心灰的时候给陈烁发微信打字说“明天你不用来了”然后删掉，我在想如果不删，转到下一场景陈烁直接收到“明天咱俩聊一下”，会更简洁，但后来一想，这样的话会显得丁雷更像是个干脆爽直的性格，就不贴合角色了。</p>
-<p>​再比如，陈烁妈妈为了儿子终于还是上台演唱了，陈烁看到后忍不住眼泪的情感逻辑是对的，但观众情绪体验的递进是缺的，观众只知道妈妈唱歌就会勾起对爸爸的回忆，但不知道妈妈在唱歌和爱人的关联事件上经历了什么样的负面情节，也就感受不到这个回忆会给她带来怎样的痛，进而也感觉不到男主看到这一幕的心里冲击的力度。有的东西还是有必要演出来让观众亲历一遍（比如《第二十条》王永强夫妇被虐待的场景回溯），听说是不够的。相比陈烁，妈妈和张海宇的B故事更吸引我。</p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>​主要人物的转变全靠回忆杀，回忆的还不是自己，而是其他人，透出一种“我要是这么做，好像挺对不起xxx的啊”的被动驱动意味，可是一个人如果真正热爱一件事本身，虽然可以迷失自己和精神潦倒、可以在自身之外获得安慰和鼓励，但在自我质疑中选择继续的决心和核心动力从来都是从自身对事物最原始的喜欢里获得的。而且每到人物内心反思的时候，就会出现煽情的小旋律，这个确实有点太老套了，让反思本身减少了力度。</p>
-<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>投票卡片里的“凯文out”还挺抓我的，在心里激起那么一点点波澜，然后虚惊一次，有种从去年收好的大衣兜里翻到钱的失而复得的快感，尽管那本来就是自己的钱。</p>
-<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>小沈阳的剧团表演的主要是经典文艺，而且会把两种表演不经有机融合地放在一起，比如空竹+街舞，给我一种十八线的演艺小团体的印象，透出一种谋生的无奈和现实感。但后来他们看陈烁比赛的时候，小沈阳说难度不高，要空竹的演员却说:“别看难度不高，他跳的是文化。”让我感觉到，这些“小演员”是真的喜欢自己的手艺，虽然迫于生计呆在不知名的小团体，但她们对自己热爱的事有更深刻的理解，并不执迷于形式技巧的繁复，却更在意艺术最重要的那小小的核。这也契合了片子的主控思想，以及丁雷决赛时候说的那句“比赛可以输，但惊叹号不能输所指的对热爱的事的纯粹。另外空竹演员说出的这句话，也暗示了惊叹号最终靠团队文化的表达获胜的结局。这一句台词真让我喜欢。进一步联系到整个片子，我觉得大鹏的商业片确实会有老套的情节，但我总能从他的片子里不经意间感觉到真诚的生活气息和角色对所爱事物的劲头，不过如果《热烈》核心能在讲“喜欢做就纯粹一点的基础上更强调这个“文化”，让观众能认知到惊叹号成员、凯文甚至比赛现场的其他舞者和看台观众们对街舞文化的热烈，可能会更好（尤其凯文不够立体，像是个单纯的反派）。</p>
-<h1 id="06"><a href="#06" class="headerlink" title="06"></a>06</h1><p>第三幕高潮戏的对抗，双方通过在动作花样上的创新进行比拼，我的注意力也一直在各种漂亮的动作上，毕竟舞蹈和动作直接相关，动作也会很直接的影响视听的表现方式，我本来还猜最后要怎么取胜，结果原来是靠文化和精神，有点意想不到。而且惊叹号这个队名透出的个性和张扬也很符合街舞这种艺术的风格，但没想到它是有故事的，让人想默默点头。一个最终的动作达成了故事A故事的结局、带出来主角队伍的精神内核、让丁雷的人物曲线更完整，这一刻是很爽的。第三幕的街舞确实好看，让我联想到看印度电影歌舞部分的感觉，但一时分辨不出是因为街舞动作的精彩还是视听语言托举的精妙，下次应该单独拎出来再看看，琢磨一下大鹏是怎么拍的。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>剧情</tag>
-        <tag>喜剧</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>艋舺 | 2010</title>
     <url>/2024/04/10/%E8%89%8B%E8%88%BA_2010/</url>
     <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>开头主角们引起街头大乱后出了片名，然后紧接着回到同一场景，景别视角都没变，好像是在说“哦，我还没讲完，我们先回来啊”，感受到导演一种稳健控场的自信。</p>
@@ -661,19 +633,22 @@
       </tags>
   </entry>
   <entry>
-    <title>热辣滚烫 | 2024</title>
-    <url>/2024/02/14/%E7%83%AD%E8%BE%A3%E6%BB%9A%E7%83%AB_2024/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>雷佳音赛前收了钱后对乐莹的态度转变过于唐突，缺乏说服力，我明白这是推动乐莹这个角色决心要为自己赢一次的催化剂之一，但如果把劈腿闺蜜的属性融进去，可能更顺畅和整合。</p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>其实看过乐莹倒地时的回忆后，才真正明白她决心赢一次之前经历了多么深刻的难过，但在那之前我会有种还没有足够的催化剂就决心想要赢一次了，观众会觉得她是挺难的，但好像还没那么难，会带着这种稍稍的疑惑一直跟角色走下去，直到从那些回忆里补全了角色的经历，才打消了疑惑，也明白乐莹一次次的说“我还能打”背后是怎样的决绝，但角色行为动机的合理性被滞后，容易减少观众对角色的移情。</p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>电影之外贾玲减脂增肌变化这么大，是这个片子在宣传上给我最大的印象，但是片子里关于减肥这事儿本身没有特意强调，这在故事里是个好的处理，但在宣发配合上可能会对观众有误导，容易把注意力引到对乐莹减肥具体的缘由和经过的期待上。</p>
-<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>贾玲戏外的健身结果为观众对乐莹竞技实力的猜测赋予了积极的增益。沙溢说过乐莹是补充名额报名的，所以赛前就说打不过就喊停，我当时觉得乐莹在这场比赛中肯定不会输的，会以意想不到但合理的方式赢战胜强大的对手，她应该没有那么强，但肯定不会很弱，而沙溢的劝说似乎是为了表现外界对乐莹的不看好和衬托她尚未外露的实力。结果刚打了几下，乐莹就招架不住，而且出了血，观众直接感受到乐莹的弱和她面对的情况有多残酷，也说明沙溢的劝说是真的在警告乐莹以及观众“不要大意”。在双方实力如此悬殊的前提下，也只有左拳是乐莹逆转劣势的杀手锏了，当她三下左拳成功击中对手的时候，镜头语言告诉我这就是乐莹赢的时刻，此时对手在一个很小的景别里被打出画框，让乐莹享受到独属于角色自己的赢的时刻，正当我准备质疑她仅靠三下左拳就击倒了对手的时候，对手在同样的景别里立刻反击，让我知道对手根本没有倒，只是趔趄了一下，既保持了实力悬殊的设定，又给了角色足够的尊重。</p>
+    <title>闪电侠 | 2023</title>
+    <url>/2023/06/24/%E9%97%AA%E7%94%B5%E4%BE%A0_2023/</url>
+    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>看之前有点担心会不会因为DCEU有没看过的片子而看不懂，出门之前看了大聪的预告解析，确定没问题的同时也了解了漫画的故事，片子跟漫画的走向比较像，所以看的时候剧情也更好猜了，就比较可惜。</p>
+<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>整体比较合家欢，没有特别惊艳的地方，也没有哪里拉垮，有点复联1和2的感觉（听说是借鉴漫威）。像开场对抗里的婴儿们从高楼坠落，我本来就知道超级英雄一定会都救下来，加上又是婴儿，悬念更少了，同时整个过程对于看过X战警快银名场面的观众来讲可能会觉得没有很出彩，以及婴儿的CG感很明显，于是我有点着急到下一节拍。开头神奇女侠出场的时候顶不起来她的BGM，太放松了，力道不够。还有最后大战里两个闪电侠的表演时刻配上动感的音乐就让我更不紧绷，立马想起《雷神3》，要是我啃着爆米花应该更带感。</p>
+<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>全片我最有印象的，一个是小闪带着改装的战衣头套扭头看大闪时候，头套变形的笑点，另一个就是众多经典角色和他们的演员。</p>
+<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>“想念母亲”的行为驱动在激励事件后就鲜有提及，最后才收回来，中间没有多少为此两难的鸿沟，让这种世俗情感有点弱化，让超英更远离普通人，观众移情变少了点。主题强调的“过去的事才成就了当下的你”，在B故事里没有多少表现，更像一句需要被说出的金句。</p>
+<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>基蝙随身带卷尺、现场心算等的老派科技，配上基蝙严肃正经的状态，这种反差带来的笑点还挺有意思的。<br>有两句台词印象也很深：“虽然我是个超市里见到的陌生阿姨，但你要抱抱吗？”“（大闪最后对妈妈说出的）我爱你更早。”<br>这部作为放松看看的片子很不错，我更喜欢扎导版《正义联盟》里的闪电侠，专属他的逆转时间桥段更加背水一战，心理张力更大，更马杀鸡。<br>我看的杜比影厅，音量有点太大了，然后座椅对脖子没有支撑，下次不去这个厅了。</p>
 ]]></content>
       <categories>
         <category>影评</category>
       </categories>
       <tags>
-        <tag>剧情</tag>
-        <tag>喜剧</tag>
+        <tag>动作</tag>
+        <tag>科幻</tag>
+        <tag>奇幻</tag>
+        <tag>冒险</tag>
       </tags>
   </entry>
   <entry>
@@ -698,25 +673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>闪电侠 | 2023</title>
-    <url>/2023/06/24/%E9%97%AA%E7%94%B5%E4%BE%A0_2023/</url>
-    <content><![CDATA[<h1 id="01"><a href="#01" class="headerlink" title="01"></a>01</h1><p>看之前有点担心会不会因为DCEU有没看过的片子而看不懂，出门之前看了大聪的预告解析，确定没问题的同时也了解了漫画的故事，片子跟漫画的走向比较像，所以看的时候剧情也更好猜了，就比较可惜。</p>
-<h1 id="02"><a href="#02" class="headerlink" title="02"></a>02</h1><p>整体比较合家欢，没有特别惊艳的地方，也没有哪里拉垮，有点复联1和2的感觉（听说是借鉴漫威）。像开场对抗里的婴儿们从高楼坠落，我本来就知道超级英雄一定会都救下来，加上又是婴儿，悬念更少了，同时整个过程对于看过X战警快银名场面的观众来讲可能会觉得没有很出彩，以及婴儿的CG感很明显，于是我有点着急到下一节拍。开头神奇女侠出场的时候顶不起来她的BGM，太放松了，力道不够。还有最后大战里两个闪电侠的表演时刻配上动感的音乐就让我更不紧绷，立马想起《雷神3》，要是我啃着爆米花应该更带感。</p>
-<h1 id="03"><a href="#03" class="headerlink" title="03"></a>03</h1><p>全片我最有印象的，一个是小闪带着改装的战衣头套扭头看大闪时候，头套变形的笑点，另一个就是众多经典角色和他们的演员。</p>
-<h1 id="04"><a href="#04" class="headerlink" title="04"></a>04</h1><p>“想念母亲”的行为驱动在激励事件后就鲜有提及，最后才收回来，中间没有多少为此两难的鸿沟，让这种世俗情感有点弱化，让超英更远离普通人，观众移情变少了点。主题强调的“过去的事才成就了当下的你”，在B故事里没有多少表现，更像一句需要被说出的金句。</p>
-<h1 id="05"><a href="#05" class="headerlink" title="05"></a>05</h1><p>基蝙随身带卷尺、现场心算等的老派科技，配上基蝙严肃正经的状态，这种反差带来的笑点还挺有意思的。<br>有两句台词印象也很深：“虽然我是个超市里见到的陌生阿姨，但你要抱抱吗？”“（大闪最后对妈妈说出的）我爱你更早。”<br>这部作为放松看看的片子很不错，我更喜欢扎导版《正义联盟》里的闪电侠，专属他的逆转时间桥段更加背水一战，心理张力更大，更马杀鸡。<br>我看的杜比影厅，音量有点太大了，然后座椅对脖子没有支撑，下次不去这个厅了。</p>
-]]></content>
-      <categories>
-        <category>影评</category>
-      </categories>
-      <tags>
-        <tag>动作</tag>
-        <tag>奇幻</tag>
-        <tag>科幻</tag>
-        <tag>冒险</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>飞鹰艾迪 | 2016</title>
     <url>/2020/03/22/%E9%A3%9E%E9%B9%B0%E8%89%BE%E8%BF%AA_2016/</url>
     <content><![CDATA[<p>观影日期：2020.3.21</p>
@@ -732,105 +688,149 @@
       </categories>
       <tags>
         <tag>剧情</tag>
+        <tag>喜剧</tag>
         <tag>传记</tag>
         <tag>运动</tag>
-        <tag>喜剧</tag>
       </tags>
   </entry>
   <entry>
-    <title>Pastiche | 众多元素汇聚成自定义图形</title>
-    <url>/2024/10/14/Pastiche/</url>
-    <content><![CDATA[<h1 id="Pastiche"><a href="#Pastiche" class="headerlink" title="Pastiche"></a>Pastiche</h1><h1 id="核心作用"><a href="#核心作用" class="headerlink" title="核心作用"></a>核心作用</h1><p>让多个图层汇聚到一起形成一个特定的形状。</p>
-<h1 id="v2-1-15"><a href="#v2-1-15" class="headerlink" title="v2.1.15"></a>v2.1.15</h1><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ol>
-<li>准备：作为衬底的层、作为填充物的集群层。</li>
-<li>把衬底层预合成，然后把集群层和衬底预合成放在同一合成内，对预合成添加Pastiche。</li>
-<li>设置集群的分布方式（各变换值+应用顺序）。</li>
-<li>设置集群的动画运动方式（时间差值+空间差值+应用顺序）</li>
-<li>单击<strong>Create</strong>按钮即可（每次调整后都要再点一次）。</li>
-</ol>
-<h2 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h2><h3 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h3><p>控制集群的分布方式。</p>
-<img src="https://bu.dusays.com/2024/10/14/670cd47ca0b48.png" width = 400>
-
+    <title>Octane核心知识</title>
+    <url>/2024/10/18/Octane%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<blockquote>
+<p>参考资料：<br><a href="https://www.bilibili.com/video/BV13841197i6?p=9">B站nothing教研所-C4D基础课-07材质基础篇：OC渲染器设置</a><br><a href="https://www.bilibili.com/video/BV13841197i6?p=10">B站nothing教研所-C4D基础课-08材质基础篇：灯光</a><br><a href="https://www.bilibili.com/video/BV13841197i6?p=11">B站nothing教研所-C4D基础课-09材质基础篇：材质调节</a></p>
+</blockquote>
+<h1 id="首要设置（在OC的全局设置里）"><a href="#首要设置（在OC的全局设置里）" class="headerlink" title="首要设置（在OC的全局设置里）"></a>首要设置（在OC的全局设置里）</h1><p>OC默认的一些设置是不利于制作和渲染的，需要提前修改一下。</p>
+<h2 id="Kernal选项卡"><a href="#Kernal选项卡" class="headerlink" title="Kernal选项卡"></a>Kernal选项卡</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa73e721.png" alt="OC核心-01.png"></p>
 <ul>
-<li><p><strong>Position</strong><br>位置分布依据。</p>
+<li><p><strong>第一个下拉菜单</strong><br>渲染解算的模式。</p>
 <ul>
-<li><strong>Stippling (Alpha&#x2F;Luma)</strong><br>按点状排列。感觉不常用。<br>激活Position Options下的<strong>Stippling Precision</strong>，控制点状排列的精准度。</li>
-<li><strong>Organic</strong><br>自然地填充。</li>
-<li><strong>Ignore</strong><br>保持当前状态，并且不会打关键帧。</li>
+<li>Info channels<br>信息通道。一般用来预览通道。</li>
+<li>Direct lighting<br>直接光照。渲染相对较快，但不够写实。</li>
+<li>Path tracing、Photon tracing、PMC<br>三种无偏渲染模式。三者差别不大，一般用Path tracing路径追踪。</li>
 </ul>
 </li>
-<li><p><strong>Scale</strong><br>缩放依据。</p>
+<li><p><strong>Max. samples</strong><br>最大采样。值越大，品质越高，速度越慢。预览的话设为800就够，最终渲染的话可以设为2000-20000。</p>
+</li>
+<li><p><strong>Diffuse depth、Specular depth</strong><br>漫射、折射的作用程度。值越高，效果越真实，场景越亮。</p>
 <ul>
-<li><strong>From Alpha</strong><br>越不透明的区域，缩放越大。<br>注意：如果alpha区域太小，也可能在此处出现一个比区域本身大很多的个体，应该是bug。</li>
-<li><strong>From Luminance</strong><br>明度越高的区域，缩放越大。</li>
-<li><strong>From Neighborhood</strong><br>根据相邻的空隙自动适配。</li>
+<li>Diffuse depth预览的话设为8就够，最终渲染可以设为16。</li>
+<li>Specular depth设为8就行，场景里有玻璃等物件的话可以增加。</li>
 </ul>
 </li>
-<li><p><strong>Rotation</strong><br>旋转依据。</p>
+<li><p><strong>Gl clamp</strong><br>对全局光照程度的钳制。降低到1000可以防止出现伪阴影。</p>
+</li>
+<li><p><strong>Alpha channel</strong><br>保留透明通道。</p>
+</li>
+<li><p><strong>Static noise</strong><br>让噪点不会过分闪动。建议勾选。</p>
+</li>
+<li><p><strong>Adaptive sampling</strong><br>根据场景自动优化采样。建议勾选。</p>
+</li>
+</ul>
+<h2 id="Settings-选项卡下的Env-子选项卡"><a href="#Settings-选项卡下的Env-子选项卡" class="headerlink" title="Settings 选项卡下的Env. 子选项卡"></a>Settings 选项卡下的Env. 子选项卡</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa71d957.png" alt="OC核心-02.png"></p>
 <ul>
-<li><strong>Orient Towards Center</strong><br>集群全部朝向衬底图案的中心。​</li>
+<li><strong>Default environment color</strong><br>默认环境光的颜色。一般是改成纯黑，也就是完全没有光了，然后手动打光。</li>
 </ul>
-</li>
-<li><p><strong>Fill Color&#x2F;Stroke Color</strong><br>填充、描边的颜色依据。</p>
+<h2 id="注意黏土模式"><a href="#注意黏土模式" class="headerlink" title="注意黏土模式"></a>注意黏土模式</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa72b3bf.png" alt="OC核心-03.png"></p>
 <ul>
-<li><strong>Custom Color</strong><br>指定颜色。<br>激活Color Options下的<strong>Fill Color&#x2F;Stroke Color</strong>，来设定颜色。</li>
-<li><strong>Random</strong><br>随机。<br>激活Color Options下的<strong>Min&#x2F;Max Fill color</strong>和<strong>Min&#x2F;Max Stroke color</strong>，来限制随机范围。</li>
-<li><strong>Source Color</strong><br>保持和衬底图案的颜色一样。</li>
+<li><strong>Clay modes</strong><br>黏土模式。忽略反射等材质属性来查看，就像看白模一样，这时候调材质是没反应的。</li>
 </ul>
-</li>
-<li><p><strong>Position&#x2F;Scale&#x2F;Rotation&#x2F;Opacity&#x2F;Color Options</strong><br>在设定了依据的基础上，继续限制值的范围。</p>
+<h1 id="OC灯光"><a href="#OC灯光" class="headerlink" title="OC灯光"></a>OC灯光</h1><h2 id="日光-Daylight-Tag"><a href="#日光-Daylight-Tag" class="headerlink" title="日光 Daylight Tag"></a>日光 Daylight Tag</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa738d21.png" alt="OC核心-04.png"></p>
 <ul>
-<li>注：Color Options下的<strong>Outside The source</strong>没试出来啥作用，不影响。</li>
+<li><strong>Power、Sun intensity</strong><br>Power是调整日光的整体强度；Sun intensity只调整迎光面的光强度，也就是主光的强度，暗部不会受影响。<br><img src="https://bu.dusays.com/2024/10/18/67127fa7455f1.png" alt="OC核心-05.png"><br>一般是先调Power定一个整体光照的调，然后调Sun intensity控制主光的强度。</li>
+<li><strong>North Offset</strong><br>沿地平面旋转日光的角度。与直接旋转日光对象的区别是后者会影响光的强度。</li>
+<li><strong>Sun size</strong><br>太阳大小。影响影子的虚实。</li>
+<li><strong>Sky color</strong><br>天空颜色。会影响场景的偏色（因为Octane日光会自带天空）。</li>
+<li><strong>Mix sky texture</strong><br>如果场景里还有OC的HDR环境，勾选可以同时显示日光和HDR光照。</li>
 </ul>
-</li>
-<li><p><strong>Layer Order</strong><br>集群排布的应用顺序（根据层序号）。</p>
+<h2 id="HDR-Environment-Tag"><a href="#HDR-Environment-Tag" class="headerlink" title="HDR Environment Tag"></a>HDR Environment Tag</h2><p>通过一张HDR贴图形成光照。</p>
+<h2 id="区域光-Octane-LightTag"><a href="#区域光-Octane-LightTag" class="headerlink" title="区域光 Octane LightTag"></a>区域光 Octane LightTag</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa742e9c.png" alt="OC核心-06.png"></p>
 <ul>
-<li><strong>By X&#x2F;Y</strong><br>从左到右&#x2F;从上到下递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf29eb.png" width = 200>
-<img src="https://bu.dusays.com/2024/10/14/670cd1ccd95ed.png" width = 200></li>
-<li><strong>By Norm</strong><br>从第一象限到第四象限递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf0b46.png" width = 200></li>
-<li><strong>By Distance from Comp Center</strong><br>离衬底预合成的中心越远越递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1ccf211d.png" width = 200></li>
-<li><strong>By Distance from lmage Center</strong><br>离衬底图案的中心越远越递增。  <img src="https://bu.dusays.com/2024/10/14/670cd1cdf1ebe.png" width = 200></li>
-<li><strong>Minimum Assignment</strong><br>在当前分布的基础上，取最近的衬底图案处。  <img src="https://bu.dusays.com/2024/10/14/670cd1ce13c4d.png" width = 500>
-<img src="https://bu.dusays.com/2024/10/14/670cd1ce37bf6.png" width = 500></li>
+<li><strong>Texture</strong><br>光源纹理。通过Color、Gradient等着色器来改变光源颜色。</li>
+<li><strong>Distribution</strong><br>光源分布。使用贴图（选择c4doctane-ImageTexture）来改变光源的轮廓，还可以导入IES文件来形成射灯效果。<br>注意如果是改变区域光对象本身的形状和大小，要到灯光对象的Details选项卡里。<br><img src="https://bu.dusays.com/2024/10/18/67127fa81ae9b.png" alt="OC核心-07.png"></li>
+<li><strong>Surface brightness</strong><br>按面积发光。不勾选的话，光源缩放就不会影响光的强度。</li>
+<li><strong>Double sided</strong><br>双面发光。</li>
+<li><strong>Visible on diffuse、Visible on specular、Cast shadows</strong><br>是否会造成漫射、高光、投影。</li>
+<li><strong>Opacity</strong><br>区域光自身对象的透明度。如果挡画面的话，就调成0。</li>
 </ul>
-</li>
-</ul>
-<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><p>控制动画的运动方式。</p>
-<img src="https://bu.dusays.com/2024/10/14/670cd1ce55f56.png" width = 400>
-
+<h1 id="OC材质"><a href="#OC材质" class="headerlink" title="OC材质"></a>OC材质</h1><p>材质的显示顺序：优先显示后添加的材质；优先显示子级对象自身的材质。</p>
+<p>材质的选择：透明就用Specular；不透明的话，有反射就用Glossy，没有反射就用Diffuse。</p>
+<h2 id="漫射-Octane-Diffuse-Material"><a href="#漫射-Octane-Diffuse-Material" class="headerlink" title="漫射 Octane Diffuse Material"></a>漫射 Octane Diffuse Material</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fa8496e2.png" alt="OC核心-08.png"></p>
 <ul>
-<li><p><strong>Frames to Render</strong><br>点击Create时应用在时间线上的哪里。</p>
+<li><p><strong>Diffuse通道</strong><br>材质的底色。</p>
 <ul>
-<li><strong>Current Frame</strong><br>仅应用到当前帧。<br>激活<strong>Force Keyframing</strong>，勾选将会在点击Create时给集群层们K帧。</li>
-<li><strong>Every X Frames (within work area)</strong><br>每个X帧自动打一个关键帧，在关键帧处应用。<br>激活<strong>Interval (frames)</strong> ，来设定X的值。</li>
-<li><strong>From Layer Markers</strong><br>根据衬底预合成上的标记位置自动打关键帧，在关键帧处应用。</li>
+<li><strong>Texture</strong><br>可以添加纹理贴图。（三个常见的C4D自带基础着色：Color、Gradient、Noise）<br>添加贴图要到c4doctane-ImageTexture，并在其中调节贴图的投射方式和变换。<br><img src="https://bu.dusays.com/2024/10/18/67127fa85d72a.png" alt="OC核心-09.png"></li>
 </ul>
 </li>
-<li><p><strong>Temporal Interpolation</strong><br>关键帧时间差值，用来调整缓入缓出。<br>设为<strong>Custom</strong>会激活<strong>Speed In&#x2F;Out</strong>（没试出来具体怎么回事）和<strong>Influence In&#x2F;Out</strong>（自定义缓动值）。</p>
-</li>
-<li><p><strong>Spatial Interpolation</strong><br>关键帧空间差值，用来调整运动形式。</p>
+<li><p><strong>Bump通道、Normal通道、Displacement通道</strong><br>都是放贴图的，用来添加凹凸质感。<br>Bump：用贴图的方式添加凹凸。是视觉上的伪凹凸，但速度快。<br>Normal：在Bump的基础上还能带有伪凹凸的角度。<br>Displacement：用贴图的方式添加凹凸。是真实的凹凸，但会慢（因为会增加细分面）。</p>
 <ul>
-<li><strong>Elastic</strong><br>弹性运动。<br>激活<strong>Springiness</strong>（弹性程度）和<strong>In Out Elastic</strong>（动画出入点选择）。</li>
-<li><strong>Inner&#x2F;Outer Half Circle</strong><br>逆&#x2F;顺时针半圆运动。</li>
-<li><strong>Random Inner &amp; Outer</strong><br>随机逆+顺时针半圆运动。</li>
-<li><strong>Step</strong><br>画阶梯。</li>
-<li><strong>Zig Zag</strong><br>画软Z字。</li>
-<li><strong>Custom</strong><br>指定空间差值。<br>激活<strong>In&#x2F;Out Tangent</strong>，来调整动画出入点的圆曲偏离程度，值越大运动越歪。</li>
+<li>Displacement通道中添加着色器后，着色器的<strong>Level of detail</strong>一般选2048x2048，如果太小效果会很粗糙，太大会卡。<br><img src="https://bu.dusays.com/2024/10/18/67127fa87ace2.png" alt="OC核心-10.png"></li>
 </ul>
 </li>
-<li><p><strong>Offset (frames)</strong><br>集群层之间动画错落的最大帧数。</p>
+<li><p><strong>Opacity通道</strong><br>可以通过贴图隐藏模型的某部分。</p>
 </li>
-<li><p><strong>Offset Method</strong><br>动画错落的时候，集群层先后运动的顺序（按画面中的视觉位置）。</p>
+<li><p><strong>Emission通道</strong><br>自发光。<br><img src="https://bu.dusays.com/2024/10/18/67127fb050d9e.png" alt="OC核心-11.png"></p>
+<ul>
+<li><strong>Blackbody emission着色器</strong><br>一般做纯色发光体。</li>
+<li><strong>Texture emission着色器</strong><br>可以加贴图，比如做电子显示屏这种。</li>
+</ul>
+</li>
+<li><p><strong>Transmission通道、Medium通道</strong><br>用来做SSS半透效果。</p>
 </li>
 </ul>
-<h1 id="我的练习"><a href="#我的练习" class="headerlink" title="我的练习"></a>我的练习</h1><img src="https://bu.dusays.com/2024/10/14/670cd1e52af2f.gif" width = 400>
-
+<h2 id="光泽-Octane-Glossy-Material"><a href="#光泽-Octane-Glossy-Material" class="headerlink" title="光泽 Octane Glossy Material"></a>光泽 Octane Glossy Material</h2><p>等于在漫射基础上多了反射的属性。</p>
+<p><img src="https://bu.dusays.com/2024/10/18/67127fb05f042.png" alt="OC核心-12.png"></p>
+<ul>
+<li><strong>Roughness通道</strong><br>粗糙度。控制磨砂质感的程度。</li>
+<li><strong>Index通道</strong><br>折射率。控制整体反射的强度，1&lt;值≤8时，值越大反射越强，越像金属；但值=1的时候是金属质感最强的。</li>
+</ul>
+<h2 id="镜面-Octane-Specular-Material"><a href="#镜面-Octane-Specular-Material" class="headerlink" title="镜面 Octane Specular Material"></a>镜面 Octane Specular Material</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb05b3df.png" alt="OC核心-13.png"></p>
+<ul>
+<li><p><strong>Index通道</strong><br>折射率。一般直接输入对应物体的值。（常见物体折射率）</p>
+</li>
+<li><p><strong>Transmission通道</strong>、<strong>Medium通道</strong><br>用来做彩色玻璃效果。<br>Transmission：只是单纯对玻璃着色，但颜色不受玻璃厚度的影响，不够真实。<br>Medium：更真实的玻璃色彩。</p>
+<ul>
+<li><p>Medium通道<br><img src="https://bu.dusays.com/2024/10/18/67127fb053cbe.png" alt="OC核心-14.png"></p>
+<ul>
+<li><p><strong>Absorption着色器</strong></p>
+<p><img src="https://bu.dusays.com/2024/10/18/67127fb050d49.png" alt="OC核心-15.png"></p>
+<ul>
+<li><strong>Density</strong><br>玻璃颜色的浓淡。这个参数数值不是特别敏感，要大幅度改。</li>
+<li><strong>Absorption</strong><br>继续添加着色器来改变玻璃颜色。</li>
+</ul>
+</li>
+<li><p><strong>Scattering着色器</strong><br>做半透材质。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="节点编辑器"><a href="#节点编辑器" class="headerlink" title="节点编辑器"></a>节点编辑器</h1><p>比挨个改参数省事的方式（比如同一种投射方式用一个节点连上就行了）。</p>
+<h2 id="基础材质节点"><a href="#基础材质节点" class="headerlink" title="基础材质节点"></a>基础材质节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb0530c0.png" alt="OC核心-16.png"></p>
+<h2 id="纹理节点"><a href="#纹理节点" class="headerlink" title="纹理节点"></a>纹理节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb154564.png" alt="OC核心-17.png"></p>
+<ul>
+<li>Image texture<br>贴图。</li>
+<li><strong>Rgb spectrum</strong><br>纯色；也可作为值（有明暗的都可以作为值）。</li>
+</ul>
+<h2 id="纹理调整节点"><a href="#纹理调整节点" class="headerlink" title="纹理调整节点"></a>纹理调整节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb19080a.png" alt="OC核心-18.png"></p>
+<p>对应的就是在贴图中调节贴图的投射方式和变换。</p>
+<h2 id="自带纹理节点"><a href="#自带纹理节点" class="headerlink" title="自带纹理节点"></a>自带纹理节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb17274c.png" alt="OC核心-19.png"></p>
+<ul>
+<li><strong>Checker</strong><br>棋盘格；可作为值。</li>
+<li><strong>Octane noise</strong><br>OC噪波。</li>
+</ul>
+<h2 id="调色节点"><a href="#调色节点" class="headerlink" title="调色节点"></a>调色节点</h2><p><img src="https://bu.dusays.com/2024/10/18/67127fb1b3abc.png" alt="OC核心-20.png"></p>
+<ul>
+<li><strong>Color correction</strong><br>调整色相、饱和度、亮度。<br>要连在贴图节点和材质节点中间。<br><img src="https://bu.dusays.com/2024/10/18/67127fb978647.png" alt="OC核心-21.png"></li>
+<li><strong>Octane gradient</strong><br>生成渐变纹理；对贴图调色（用色带上的颜色映射贴图里的明暗区域）。</li>
+<li><strong>Mix</strong><br>混合多个贴图。</li>
+</ul>
 ]]></content>
       <categories>
         <category>软件教程</category>
       </categories>
       <tags>
-        <tag>AE插件</tag>
+        <tag>C4D渲染</tag>
       </tags>
   </entry>
 </search>
